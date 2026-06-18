@@ -124,13 +124,13 @@ html.lenis,html.lenis body{height:auto}
 .venture__hover{position:absolute;inset:0;opacity:0;transition:opacity .55s var(--ease)}
 .venture__video,.venture__hoverimg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;background-size:cover;background-position:center}
 .venture::after{content:"";position:absolute;inset:0;z-index:1;background:linear-gradient(180deg,transparent 40%,rgba(5,5,6,.82));pointer-events:none}
-.venture:hover .venture__hover{opacity:1}
-.venture:hover .venture__bg{transform:scale(1.05)}
+.venture:hover .venture__hover,.venture.is-active .venture__hover{opacity:1}
+.venture:hover .venture__bg,.venture.is-active .venture__bg{transform:scale(1.05)}
 .venture__inner{position:absolute;left:0;bottom:0;z-index:2;padding:clamp(1.1rem,2vw,1.9rem);pointer-events:none}
 .venture__arrow{display:block;color:#fff;margin-bottom:.7rem;line-height:0;transition:color .4s,transform .5s var(--ease)}
 .venture__title{font-family:var(--font-head);font-weight:800;text-transform:uppercase;font-size:clamp(1.05rem,1.7vw,1.6rem);line-height:1.05;letter-spacing:-.01em;color:#fff;transition:color .4s}
-.venture:hover .venture__title,.venture:hover .venture__arrow{color:var(--accent)}
-.venture:hover .venture__arrow{transform:translateX(6px)}
+.venture:hover .venture__title,.venture:hover .venture__arrow,.venture.is-active .venture__title,.venture.is-active .venture__arrow{color:var(--accent)}
+.venture:hover .venture__arrow,.venture.is-active .venture__arrow{transform:translateX(6px)}
 .venture__link{position:absolute;inset:0;z-index:3}
 
 /* ---------- 4. timeline ---------- */
