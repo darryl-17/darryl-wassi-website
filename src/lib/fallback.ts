@@ -70,6 +70,8 @@ export type SiteSettings = {
   email: string;
   heroVideoUrl?: string;
   heroPosterUrl?: string;
+  heroPlaceholderImageUrl?: string;
+  heroPlaceholderVideoUrl?: string;
   whatsapp?: string;
   instagram?: string;
   substackUrl?: string;

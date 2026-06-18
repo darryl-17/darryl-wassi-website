@@ -23,6 +23,8 @@ function mergeSettings(raw: Partial<SiteSettings> | null | undefined): SiteSetti
     email: str(raw.email, fb.email),
     heroVideoUrl: typeof raw.heroVideoUrl === 'string' ? raw.heroVideoUrl : undefined,
     heroPosterUrl: typeof raw.heroPosterUrl === 'string' ? raw.heroPosterUrl : undefined,
+    heroPlaceholderImageUrl: typeof raw.heroPlaceholderImageUrl === 'string' ? raw.heroPlaceholderImageUrl : undefined,
+    heroPlaceholderVideoUrl: typeof raw.heroPlaceholderVideoUrl === 'string' ? raw.heroPlaceholderVideoUrl : undefined,
     whatsapp: typeof raw.whatsapp === 'string' ? raw.whatsapp : undefined,
     instagram: typeof raw.instagram === 'string' ? raw.instagram : undefined,
     substackUrl: typeof raw.substackUrl === 'string' ? raw.substackUrl : undefined,
@@ -56,6 +58,8 @@ const query = groq`{
     whatsapp, instagram, substackUrl, linkedinUrl,
     "heroVideoUrl": heroVideo.asset->url,
     "heroPosterUrl": heroPoster.asset->url,
+    "heroPlaceholderImageUrl": heroPlaceholderImage.asset->url,
+    "heroPlaceholderVideoUrl": heroPlaceholderVideo.asset->url,
     socials[]{ label, url },
     sections{ ..., "spotlightImageUrls": spotlightImages[].asset->url }
   },

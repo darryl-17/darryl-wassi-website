@@ -18,6 +18,20 @@ export const siteSettings = defineType({
     }),
     defineField({ name: 'heroPoster', title: 'Image de repli (hero)', type: 'image', options: { hotspot: true } }),
     defineField({
+      name: 'heroPlaceholderImage',
+      title: "Image d'attente (hero)",
+      type: 'image',
+      options: { hotspot: true },
+      description: "Affichée immédiatement pendant le chargement de la vidéo, puis fondu vers la vidéo. (Si une vidéo d'attente est aussi définie, c'est la vidéo qui est utilisée.)",
+    }),
+    defineField({
+      name: 'heroPlaceholderVideo',
+      title: "Vidéo d'attente (hero)",
+      type: 'file',
+      options: { accept: 'video/*' },
+      description: "Courte boucle légère affichée le temps que la vidéo principale soit prête, puis fondu vers la vidéo principale.",
+    }),
+    defineField({
       name: 'manifesto',
       title: 'Texte manifeste',
       type: 'text',
