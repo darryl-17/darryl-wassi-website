@@ -53,7 +53,7 @@ export default function Hero({ settings }: { settings: SiteSettings }) {
             muted
             loop
             playsInline
-            preload="auto"
+            preload="metadata"
             // eslint-disable-next-line @typescript-eslint/no-explicit-any
             {...({ 'webkit-playsinline': 'true' } as any)}
           >
