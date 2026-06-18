@@ -1,7 +1,6 @@
 import type { Metadata, Viewport } from 'next';
 import { Anton, Archivo, Space_Grotesk } from 'next/font/google';
-import { Analytics } from '@vercel/analytics/next';
-import { SpeedInsights } from '@vercel/speed-insights/next';
+import CookieConsent from '@/components/CookieConsent';
 import './globals.css';
 
 const anton = Anton({ subsets: ['latin'], weight: '400', variable: '--font-anton', display: 'swap' });
@@ -43,8 +42,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html lang="fr" className={`${anton.variable} ${archivo.variable} ${grotesk.variable}`}>
       <body>
         {children}
-        <Analytics />
-        <SpeedInsights />
+        <CookieConsent />
       </body>
     </html>
   );

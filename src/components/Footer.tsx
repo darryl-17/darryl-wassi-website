@@ -1,4 +1,5 @@
 import type { SiteSettings } from '@/lib/fallback';
+import { CookieSettingsLink } from './CookieConsent';
 
 const SOCIAL_ICONS: Record<string, React.ReactNode> = {
   linkedin: (
@@ -48,6 +49,7 @@ export default function Footer({ settings }: { settings: SiteSettings }) {
         <nav className="footer__legal" aria-label="Liens légaux">
           <a href="/mentions-legales">Mentions légales</a>
           <a href="/confidentialite">Confidentialité</a>
+          <CookieSettingsLink />
         </nav>
       </div>
     </footer>

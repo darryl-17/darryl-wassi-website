@@ -61,10 +61,22 @@ export default async function ConfidentialitePage() {
             <a href={`mailto:${settings.email}`}>{settings.email}</a>.
           </p>
 
-          <h2>Cookies</h2>
+          <h2>Cookies et mesure d&apos;audience</h2>
           <p>
-            Ce site n'utilise pas de cookies publicitaires. Seuls des cookies techniques strictement
-            nécessaires à son bon fonctionnement peuvent être déposés.
+            Ce site n&apos;utilise <strong>aucun cookie publicitaire</strong>. Seuls des cookies techniques
+            strictement nécessaires à son fonctionnement peuvent être déposés.
+          </p>
+          <p>
+            Pour comprendre comment le site est utilisé, nous recourons à des outils de mesure d&apos;audience
+            respectueux de la vie privée (Vercel Web Analytics et Speed Insights), qui ne collectent pas de
+            données personnelles identifiantes. Conformément à la réglementation européenne (RGPD / directive
+            ePrivacy), ces outils ne sont activés <strong>qu&apos;après votre consentement explicite</strong>,
+            recueilli via la bannière affichée lors de votre première visite.
+          </p>
+          <p>
+            Vous pouvez modifier ou retirer votre choix à tout moment en cliquant sur
+            « Gérer les cookies » en bas de page. Votre préférence est conservée localement dans votre
+            navigateur.
           </p>
 
           <h2>Contact</h2>
