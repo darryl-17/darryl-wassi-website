@@ -23,7 +23,13 @@ export default function Ventures({ ventures, sections }: { ventures: Venture[]; 
           const video = tile.querySelector('video');
           if (e.isIntersecting) {
             tile.classList.add('is-active');
-            video?.play().catch(() => {});
+            if (video) {
+              // Mobile exige une vidéo réellement muette pour autoriser la lecture
+              // (React n'applique pas toujours la propriété `muted`).
+              video.muted = true;
+              video.playsInline = true;
+              video.play().catch(() => {});
+            }
           } else {
             tile.classList.remove('is-active');
             video?.pause();
