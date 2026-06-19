@@ -76,7 +76,8 @@ export default function Ventures({ ventures, sections }: { ventures: Venture[]; 
               <div className="venture__hover">
                 {v.hoverVideoUrl ? (
                   <video className="venture__video" autoPlay muted loop playsInline poster={v.imageUrl}>
-                    <source src={v.hoverVideoUrl} type="video/mp4" />
+                    {/* type non forcé : le navigateur détecte le format réel du fichier */}
+                    <source src={v.hoverVideoUrl} />
                   </video>
                 ) : (
                   <div
