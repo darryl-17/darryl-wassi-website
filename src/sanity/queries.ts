@@ -75,7 +75,8 @@ const query = groq`{
   },
   "news": *[_type == "newsItem"] | order(order asc){
     _id, title, meta, excerpt, url, accent, featured, source, ctaLabel,
-    "imageUrl": image.asset->url
+    "imageUrl": image.asset->url,
+    "videoUrl": video.asset->url
   }
 }`;
 

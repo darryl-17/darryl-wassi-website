@@ -36,6 +36,7 @@ export type NewsEntry = {
   accent?: string;
   featured?: boolean;
   imageUrl?: string;
+  videoUrl?: string;
   source?: string;
   ctaLabel?: string;
 };

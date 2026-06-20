@@ -9,6 +9,13 @@ export const newsItem = defineType({
     defineField({ name: 'meta', title: 'Étiquette', type: 'string', description: 'Ex : Distinction · Replit Buildathon' }),
     defineField({ name: 'excerpt', title: 'Extrait', type: 'text', rows: 2 }),
     defineField({ name: 'image', title: 'Image', type: 'image', options: { hotspot: true } }),
+    defineField({
+      name: 'video',
+      title: 'Vidéo (optionnelle)',
+      type: 'file',
+      options: { accept: 'video/mp4' },
+      description: "MP4 léger (< 5 Mo). Si renseignée, elle est lue automatiquement quand la publication est au centre de l'écran. L'image ci-dessus sert d'aperçu.",
+    }),
     defineField({ name: 'url', title: 'Lien de redirection', type: 'url', description: 'Où mène le bouton « Lire » (post LinkedIn, Substack, article…).' }),
     defineField({
       name: 'source',
