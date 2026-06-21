@@ -1,9 +1,7 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import { AnimatePresence, motion, useScroll, useSpring } from 'framer-motion';
-
-const MENU_EASE = [0.16, 1, 0.3, 1] as const;
+import { motion, useScroll, useSpring } from 'framer-motion';
 
 const primaryLinks = [
   { href: '#hero', label: 'Accueil' },
@@ -79,48 +77,40 @@ export default function Nav() {
         </button>
       </header>
 
-      <AnimatePresence>
-        {open && (
-          <motion.div
-            className="mobile-menu"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.45, ease: MENU_EASE }}
-          >
-            <div className="mobile-menu__group">
-              {primaryLinks.map((l, i) => (
-                <motion.a
-                  key={l.href}
-                  href={l.href}
-                  className={active === l.href.slice(1) ? 'is-active' : undefined}
-                  onClick={() => setOpen(false)}
-                  initial={{ opacity: 0, y: 14 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.5, ease: MENU_EASE, delay: 0.15 + i * 0.07 }}
-                >
-                  {l.label}
-                </motion.a>
-              ))}
-            </div>
-            <div className="mobile-menu__group mobile-menu__group--secondary">
-              {secondaryLinks.map((l, i) => (
-                <motion.a
-                  key={l.href}
-                  href={l.href}
-                  className={active === l.href.slice(1) ? 'is-active' : undefined}
-                  onClick={() => setOpen(false)}
-                  initial={{ opacity: 0, y: 14 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.5, ease: MENU_EASE, delay: 0.15 + (primaryLinks.length + i) * 0.07 }}
-                >
-                  {l.label}
-                </motion.a>
-              ))}
-            </div>
-          </motion.div>
-        )}
-      </AnimatePresence>
+      {open && (
+        <motion.div
+          className="mobile-menu"
+          initial={{ x: '100%' }}
+          animate={{ x: 0 }}
+          exit={{ x: '100%' }}
+          transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+        >
+          <div className="mobile-menu__group">
+            {primaryLinks.map((l) => (
+              <a
+                key={l.href}
+                href={l.href}
+                className={active === l.href.slice(1) ? 'is-active' : undefined}
+                onClick={() => setOpen(false)}
+              >
+                {l.label}
+              </a>
+            ))}
+          </div>
+          <div className="mobile-menu__group mobile-menu__group--secondary">
+            {secondaryLinks.map((l) => (
+              <a
+                key={l.href}
+                href={l.href}
+                className={active === l.href.slice(1) ? 'is-active' : undefined}
+                onClick={() => setOpen(false)}
+              >
+                {l.label}
+              </a>
+            ))}
+          </div>
+        </motion.div>
+      )}
     </>
   );
 }
