@@ -49,13 +49,14 @@ export default function Timeline({ items, showCta = false, heading, sections }: 
         {items.map((item, i) => (
           <motion.div
             key={item._id}
-            className={`tl2__item ${i % 2 === 0 ? 'tl2__item--left' : 'tl2__item--right'}`}
+            className={`tl2__item ${i % 2 === 1 ? 'tl2__item--imgright' : 'tl2__item--imgleft'}`}
             initial={{ opacity: 0, y: 44 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: false, margin: '0px 0px -12% 0px' }}
             transition={{ duration: 0.8, ease: EASE }}
           >
-            <div className="tl2__card">
+            {/* Côté image (alterné gauche/droite) */}
+            <div className="tl2__media">
               <div
                 className="tl2__photo"
                 style={
@@ -66,7 +67,17 @@ export default function Timeline({ items, showCta = false, heading, sections }: 
                   } as React.CSSProperties
                 }
               />
-              <span className="tl2__year">{item.year}</span>
+            </div>
+
+            {/* Côté texte (avec image floutée en fond) */}
+            <div className="tl2__text">
+              {item.blurImageUrl && (
+                <div
+                  className="tl2__blur"
+                  aria-hidden="true"
+                  style={{ backgroundImage: `url('${item.blurImageUrl}')` }}
+                />
+              )}
               <h3 className="tl2__title">{item.title}</h3>
               {item.place && (
                 <span className="tl2__place">
@@ -75,7 +86,9 @@ export default function Timeline({ items, showCta = false, heading, sections }: 
               )}
               {item.description && <p className="tl2__desc">{item.description}</p>}
             </div>
-            <span className="tl2__node" />
+
+            {/* Année au centre, sur la ligne */}
+            <span className="tl2__year">{item.year}</span>
           </motion.div>
         ))}
       </div>
