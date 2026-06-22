@@ -29,6 +29,10 @@ export const metadata: Metadata = {
     locale: 'fr_FR',
     type: 'website',
   },
+  other: {
+    // Vérification du domaine pour Pinterest (claim du site)
+    'p:domain_verify': '96d0dccb3bca101194eb458caf091944',
+  },
 };
 
 export const viewport: Viewport = {
