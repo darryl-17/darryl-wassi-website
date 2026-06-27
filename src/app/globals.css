@@ -389,9 +389,10 @@ html.lenis,html.lenis body{height:auto}
 .showrow__meta{font-family:var(--font-head);font-weight:700;font-size:.72rem;letter-spacing:.2em;text-transform:uppercase;color:var(--accent)}
 .showrow__title{font-family:var(--font-display);text-transform:uppercase;font-size:clamp(1.6rem,3.4vw,2.8rem);line-height:.95;letter-spacing:-.01em}
 .showrow__desc{color:var(--grey);font-size:clamp(.95rem,1.2vw,1.1rem);line-height:1.6;max-width:56ch}
-.showrow__links{display:flex;flex-wrap:wrap;gap:1.2rem;margin-top:.4rem}
-.showrow__link{font-family:var(--font-head);font-weight:700;font-size:.8rem;letter-spacing:.05em;text-transform:uppercase;color:var(--white);transition:color .3s}
-.showrow__link:hover{color:var(--accent)}
+.showrow__links{display:flex;flex-wrap:wrap;align-items:center;gap:1rem;margin-top:.6rem}
+.showrow__platform{display:inline-flex;transition:transform .3s,filter .3s}
+.showrow__platform svg{width:clamp(30px,3vw,38px);height:clamp(30px,3vw,38px);display:block}
+.showrow__platform:hover{transform:translateY(-3px);filter:brightness(1.12)}
 @media (max-width:680px){
   .rryl__backdrop{grid-template-columns:repeat(3,1fr)}
   .showrow{grid-template-columns:1fr;gap:1rem}
