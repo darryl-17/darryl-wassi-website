@@ -164,7 +164,7 @@ html.lenis,html.lenis body{height:auto}
   .tl2__item{grid-template-columns:1fr;padding-left:36px;row-gap:1rem;align-items:start}
   .tl2__item--imgleft .tl2__media,.tl2__item--imgright .tl2__media{grid-column:1}
   .tl2__item--imgleft .tl2__text,.tl2__item--imgright .tl2__text{grid-column:1}
-  .tl2__year{position:static;transform:none;background:none;padding:0;order:-1;font-size:clamp(1.8rem,8vw,2.6rem)}
+  .tl2__year{position:static;transform:none;background:none;padding:0;order:-1;font-size:clamp(1.8rem,8vw,2.6rem);max-width:none;white-space:normal;word-break:normal;overflow-wrap:normal}
   .subnav__brand .nav__name{display:none}
 }
 
