@@ -146,7 +146,7 @@ html.lenis,html.lenis body{height:auto}
 .tl2__photo{width:100%;aspect-ratio:16/10;background:var(--g);background-size:cover;background-position:center;border-radius:6px;border:1px solid var(--line);filter:grayscale(.2) brightness(.95)}
 .tl2__text{position:relative;display:flex;flex-direction:column;justify-content:flex-start;gap:.6rem;padding:0;min-width:0;min-height:clamp(140px,16vw,210px)}
 .tl2__text > *{position:relative;z-index:1}
-.tl2__blur{position:absolute;inset:-1rem -0.7rem;z-index:0;background-size:cover;background-position:center;filter:blur(20px) grayscale(.35) brightness(.45);opacity:.55;border-radius:12px}
+.tl2__blur{position:absolute;inset:-1.4rem -1.2rem;z-index:0;background-size:cover;background-position:center;filter:blur(20px) grayscale(.35) brightness(.45);opacity:.55;-webkit-mask-image:radial-gradient(115% 115% at 50% 50%,#000 40%,transparent 78%);mask-image:radial-gradient(115% 115% at 50% 50%,#000 40%,transparent 78%)}
 .tl2__item--imgleft .tl2__media{grid-column:1;grid-row:1}
 .tl2__item--imgleft .tl2__text{grid-column:2;grid-row:1}
 .tl2__item--imgright .tl2__media{grid-column:2;grid-row:1}
