@@ -9,6 +9,7 @@ const primaryLinks = [
   { href: '#ventures', label: 'Projets' },
   { href: '#parcours', label: 'Parcours' },
   { href: '#spotlight', label: 'Lingua Afrika' },
+  { href: '#rryl', label: 'RRYL Media Service' },
   { href: '#news', label: 'Actualités' },
 ];
 
