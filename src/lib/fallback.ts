@@ -142,12 +142,12 @@ export const fallbackContent: SiteContent = {
       spotlightImageUrls: [],
       rrylEyebrow: '05 — Mon studio média',
       rrylLogo: 'RRYL MEDIA SERVICE',
-      rrylTagline: 'Studio de contenu, médias & production',
+      rrylTagline: 'Médias et télécommunications',
       rrylText:
-        "RRYL Media Service est mon studio média : podcasts, contenus et marques qui racontent des histoires fortes — du Cameroun, pour l'Afrique et le monde.",
+        "RRYL Media Service est une entreprise dédiée à l'univers de la création, de l'entrepreneuriat et du digital. À travers nos émissions, nous donnons la parole aux entrepreneurs, créateurs et passionnés qui façonnent le monde de demain.",
       rrylCtaLabel: 'En savoir plus',
       rrylPageIntro:
-        "RRYL Media Service produit des émissions et des contenus qui informent, inspirent et rassemblent. Du récit historique à l'entrepreneuriat en passant par les livres, chaque format est pensé pour donner une voix aux idées qui comptent.",
+        "RRYL Media Service est une entreprise dédiée à l'univers de la création, de l'entrepreneuriat et du digital. À travers nos émissions, nous donnons la parole aux entrepreneurs, créateurs et passionnés qui façonnent le monde de demain.\nEntre discussions inspirantes, conseils pratiques et réflexions profondes sur les défis du monde moderne, RRYL Media Service se veut un espace d'échanges authentiques et de partage d'expériences réelles.\nNotre mission : informer, inspirer et motiver une nouvelle génération d'esprits créatifs et ambitieux à travers des contenus audio percutants, humains et ancrés dans la réalité.",
       newsEyebrow: '06 — News & Stories',
       newsTitle: 'ACTUALITÉS',
       newsTitleAccent: '& CONTENUS',

@@ -60,7 +60,6 @@ export default function Footer({ settings }: { settings: SiteSettings }) {
           <a href="/confidentialite">Confidentialité</a>
           <CookieSettingsLink />
         </div>
-        <span className="footer__credit">Site par {settings.name}</span>
       </div>
     </footer>
   );

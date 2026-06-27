@@ -64,7 +64,11 @@ export default async function RrylPage() {
             <p className="rrylpage__tagline">{s.rrylTagline}</p>
           </Reveal>
           <Reveal delay={0.15}>
-            <p className="rrylpage__intro">{s.rrylPageIntro}</p>
+            <div className="rrylpage__intro">
+              {s.rrylPageIntro.split('\n').filter(Boolean).map((para, i) => (
+                <p key={i}>{para}</p>
+              ))}
+            </div>
           </Reveal>
         </section>
 
