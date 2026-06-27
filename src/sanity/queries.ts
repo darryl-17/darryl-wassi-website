@@ -78,6 +78,10 @@ const query = groq`{
     _id, title, meta, excerpt, url, accent, featured, source, ctaLabel,
     "imageUrl": image.asset->url,
     "videoUrl": video.asset->url
+  },
+  "shows": *[_type == "show"] | order(order asc){
+    _id, title, category, frequency, description, accent, appleUrl, spotifyUrl, youtubeUrl,
+    "imageUrl": image.asset->url
   }
 }`;
 
@@ -96,6 +100,7 @@ export async function getSiteContent(): Promise<SiteContent> {
       ventures: data.ventures?.length ? data.ventures : fallbackContent.ventures,
       timeline: data.timeline?.length ? data.timeline : fallbackContent.timeline,
       news: data.news?.length ? data.news : fallbackContent.news,
+      shows: data.shows?.length ? data.shows : fallbackContent.shows,
     };
   } catch (err) {
     console.warn('[Sanity] fetch failed, using fallback content:', err);

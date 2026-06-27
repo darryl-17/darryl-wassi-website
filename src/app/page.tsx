@@ -5,6 +5,7 @@ import Manifesto from '@/components/Manifesto';
 import Ventures from '@/components/Ventures';
 import Timeline from '@/components/Timeline';
 import Spotlight from '@/components/Spotlight';
+import RrylIntro from '@/components/RrylIntro';
 import News from '@/components/News';
 import Newsletter from '@/components/Newsletter';
 import Footer from '@/components/Footer';
@@ -13,7 +14,7 @@ import { getSiteContent } from '@/sanity/queries';
 export const revalidate = 30;
 
 export default async function Home() {
-  const { settings, ventures, timeline, news } = await getSiteContent();
+  const { settings, ventures, timeline, news, shows } = await getSiteContent();
 
   return (
     <>
@@ -25,6 +26,7 @@ export default async function Home() {
         <Ventures ventures={ventures} sections={settings.sections} />
         <Timeline items={timeline.slice(0, 4)} showCta sections={settings.sections} />
         <Spotlight sections={settings.sections} />
+        <RrylIntro shows={shows} sections={settings.sections} />
         <News news={news} sections={settings.sections} />
         <Newsletter sections={settings.sections} />
       </main>

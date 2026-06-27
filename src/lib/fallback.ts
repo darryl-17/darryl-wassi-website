@@ -42,6 +42,19 @@ export type NewsEntry = {
   ctaLabel?: string;
 };
 
+export type Show = {
+  _id: string;
+  title: string;
+  category?: string;
+  frequency?: string;
+  description?: string;
+  imageUrl?: string;
+  accent?: string;
+  appleUrl?: string;
+  spotifyUrl?: string;
+  youtubeUrl?: string;
+};
+
 export type SectionsContent = {
   aboutEyebrow: string;
   venturesEyebrow: string;
@@ -56,6 +69,12 @@ export type SectionsContent = {
   spotlightCopy: string;
   spotlightUrl: string;
   spotlightImageUrls: string[];
+  rrylEyebrow: string;
+  rrylLogo: string;
+  rrylTagline: string;
+  rrylText: string;
+  rrylCtaLabel: string;
+  rrylPageIntro: string;
   newsEyebrow: string;
   newsTitle: string;
   newsTitleAccent: string;
@@ -84,6 +103,7 @@ export type SiteSettings = {
 
 export type SiteContent = {
   settings: SiteSettings;
+  shows: Show[];
   ventures: Venture[];
   timeline: TimelineEntry[];
   news: NewsEntry[];
@@ -121,7 +141,15 @@ export const fallbackContent: SiteContent = {
         "Lingua Afrika construit l'infrastructure de données et les modèles fondamentaux pour apporter l'IA linguistique à 200 millions de locuteurs africains francophones — des voix qu'aucun grand modèle ne comprend aujourd'hui. Plus de 98% des langues africaines sont invisibles pour l'IA ; nous changeons cela, de l'Ewondo au Wolof, du Fulfulde au Lingala. Un moteur de données open-source, des modèles pensés pour le mobile hors ligne, et de vrais produits — dans leurs propres langues.",
       spotlightUrl: 'https://lingua-afrika--darrylwassi.replit.app/',
       spotlightImageUrls: [],
-      newsEyebrow: '05 — News & Stories',
+      rrylEyebrow: '05 — Mon studio média',
+      rrylLogo: 'RRYL MEDIA SERVICE',
+      rrylTagline: 'Studio de contenu, médias & production',
+      rrylText:
+        "RRYL Media Service est mon studio média : podcasts, contenus et marques qui racontent des histoires fortes — du Cameroun, pour l'Afrique et le monde.",
+      rrylCtaLabel: 'En savoir plus',
+      rrylPageIntro:
+        "RRYL Media Service produit des émissions et des contenus qui informent, inspirent et rassemblent. Du récit historique à l'entrepreneuriat en passant par les livres, chaque format est pensé pour donner une voix aux idées qui comptent.",
+      newsEyebrow: '06 — News & Stories',
       newsTitle: 'ACTUALITÉS',
       newsTitleAccent: '& CONTENUS',
       newsletterTitle: 'RESTONS CONNECTÉS',
@@ -129,6 +157,11 @@ export const fallbackContent: SiteContent = {
         'Remplissez le formulaire ci-dessous pour rester informé·e des dernières actualités, idées et projets de Darryl Wassi.',
     },
   },
+  shows: [
+    { _id: 'sh1', title: 'Dit en Cachette', category: 'Histoire', frequency: 'Deux fois par mois', description: "Le podcast qui révèle l'Histoire de l'Afrique autrement — récits, mémoires et vérités souvent passées sous silence.", accent: 'linear-gradient(135deg,#2a1003,#7a2e12)' },
+    { _id: 'sh2', title: 'Le Fil Des Idées', category: 'Entrepreneuriat', frequency: 'Deux fois par semaine', description: "Des conversations sur l'entrepreneuriat, l'innovation et les idées qui font avancer — pour celles et ceux qui construisent.", accent: 'linear-gradient(135deg,#1a1a1a,#3a3a3a)' },
+    { _id: 'sh3', title: 'The Craft', category: 'Livres', frequency: 'Toutes les deux semaines', description: "Une plongée dans les livres qui transforment : lectures, leçons et réflexions autour des ouvrages qui marquent.", accent: 'linear-gradient(135deg,#06231d,#0c7a5a)' },
+  ],
   ventures: [
     { _id: 'v1', title: 'Lingua Afrika', tag: 'IA · Plateforme', description: "Traduction par IA des langues d'Afrique centrale.", url: '#spotlight', cta: 'Découvrir', size: 'large', accent: 'linear-gradient(135deg,#0a1a3f,#1144ff)' },
     { _id: 'v2', title: 'RRYL Media Service', tag: 'Média · Studio', description: 'Contenu, branding & production.', url: '#', cta: 'Voir', size: 'normal', accent: 'linear-gradient(135deg,#1a1a1a,#3a3a3a)' },
