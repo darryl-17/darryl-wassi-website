@@ -17,40 +17,50 @@ const SOCIAL_ICONS: Record<string, React.ReactNode> = {
   youtube: (
     <path d="M23 12s0-3.2-.4-4.7c-.23-.83-.9-1.5-1.74-1.72C19.3 5.2 12 5.2 12 5.2s-7.3 0-8.86.38c-.83.22-1.5.89-1.73 1.72C1 8.8 1 12 1 12s0 3.2.4 4.7c.23.83.9 1.5 1.73 1.72C4.7 18.8 12 18.8 12 18.8s7.3 0 8.86-.38a2.45 2.45 0 0 0 1.74-1.72C23 15.2 23 12 23 12zM9.8 15V9l5.2 3z" />
   ),
+  facebook: (
+    <path d="M22 12a10 10 0 1 0-11.56 9.88v-6.99H7.9V12h2.54V9.8c0-2.5 1.49-3.89 3.78-3.89 1.09 0 2.24.2 2.24.2v2.46h-1.26c-1.24 0-1.63.77-1.63 1.56V12h2.78l-.44 2.89h-2.34v6.99A10 10 0 0 0 22 12Z" />
+  ),
+  tiktok: (
+    <path d="M16.5 3c.3 2.1 1.5 3.4 3.5 3.5v2.5c-1.2.1-2.3-.2-3.5-.9v5.7c0 3.6-2.6 6.2-6.1 5.9-3-.2-5.2-2.7-5-5.8.2-2.9 2.7-5 5.6-4.7v2.6c-.4-.1-.8-.1-1.2-.1-1.4.1-2.4 1.2-2.3 2.6.1 1.4 1.2 2.4 2.6 2.3 1.4-.1 2.3-1.1 2.3-2.6V3z" />
+  ),
 };
 
 export default function Footer({ settings }: { settings: SiteSettings }) {
   return (
     <footer className="footer">
-      <div className="footer__top">
-        <a className="footer__brand" href="/" aria-label="Retour à l'accueil">
-          <span className="footer__name">{settings.name.toUpperCase()}</span>
-          <span className="footer__tag">{settings.tagline}</span>
-        </a>
-        <nav className="footer__socials" aria-label="Réseaux sociaux">
-          {settings.socials.map((s) => {
-            const icon = SOCIAL_ICONS[s.label.toLowerCase().replace(/[^a-z]/g, '')];
-            return (
-              <a key={s.label} href={s.url} target="_blank" rel="noopener noreferrer" aria-label={s.label} title={s.label}>
-                {icon ? (
-                  <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-                    {icon}
-                  </svg>
-                ) : (
-                  s.label
-                )}
-              </a>
-            );
-          })}
-        </nav>
-      </div>
+      <nav className="footer__socials" aria-label="Réseaux sociaux">
+        {settings.socials.map((s) => {
+          const icon = SOCIAL_ICONS[s.label.toLowerCase().replace(/[^a-z]/g, '')];
+          return (
+            <a
+              key={s.label}
+              className="footer__social"
+              href={s.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label={s.label}
+              title={s.label}
+            >
+              {icon ? (
+                <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                  {icon}
+                </svg>
+              ) : (
+                s.label
+              )}
+            </a>
+          );
+        })}
+      </nav>
+
       <div className="footer__bottom">
-        <span>© {settings.name} 2026</span>
-        <nav className="footer__legal" aria-label="Liens légaux">
+        <div className="footer__legal">
+          <a className="footer__copy" href="/">© {settings.name} 2026</a>
           <a href="/mentions-legales">Mentions légales</a>
           <a href="/confidentialite">Confidentialité</a>
           <CookieSettingsLink />
-        </nav>
+        </div>
+        <span className="footer__credit">Site par {settings.name}</span>
       </div>
     </footer>
   );

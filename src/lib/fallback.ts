@@ -25,7 +25,6 @@ export type TimelineEntry = {
   description?: string;
   accent?: string;
   imageUrl?: string;
-  blurImageUrl?: string;
 };
 
 export type NewsEntry = {

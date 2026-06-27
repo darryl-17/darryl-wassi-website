@@ -69,20 +69,8 @@ export default function Timeline({ items, showCta = false, heading, sections }: 
               />
             </div>
 
-            {/* Côté texte (avec image floutée en fond — toujours présente pour une
-                structure homogène : image floutée choisie, sinon la photo, sinon le dégradé) */}
+            {/* Côté texte (opposé à l'image) */}
             <div className="tl2__text">
-              <div
-                className="tl2__blur"
-                aria-hidden="true"
-                style={{
-                  backgroundImage: item.blurImageUrl
-                    ? `url('${item.blurImageUrl}')`
-                    : item.imageUrl
-                      ? `url('${item.imageUrl}')`
-                      : item.accent || 'linear-gradient(135deg,#11203f,#1144ff)',
-                }}
-              />
               <h3 className="tl2__title">{item.title}</h3>
               {item.place && (
                 <span className="tl2__place">

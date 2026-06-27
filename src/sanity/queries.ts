@@ -71,8 +71,7 @@ const query = groq`{
   },
   "timeline": *[_type == "timelineItem"] | order(order asc){
     _id, year, title, place, description, accent,
-    "imageUrl": image.asset->url,
-    "blurImageUrl": blurImage.asset->url
+    "imageUrl": image.asset->url
   },
   "news": *[_type == "newsItem"] | order(order asc){
     _id, title, meta, excerpt, url, accent, featured, source, ctaLabel,
