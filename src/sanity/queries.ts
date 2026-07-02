@@ -61,7 +61,7 @@ const query = groq`{
     "heroPlaceholderImageUrl": heroPlaceholderImage.asset->url,
     "heroPlaceholderVideoUrl": heroPlaceholderVideo.asset->url,
     socials[]{ label, url },
-    sections{ ..., "spotlightImageUrls": spotlightImages[].asset->url }
+    sections{ ..., "spotlightImageUrls": spotlightImages[].asset->url, "rrylHeroImageUrl": rrylHeroImage.asset->url }
   },
   "ventures": *[_type == "venture"] | order(order asc){
     _id, title, tag, description, url, cta, size, accent,

@@ -91,6 +91,8 @@ export const siteSettings = defineType({
         { name: 'rrylTagline', title: 'RRYL Media — accroche', type: 'string' },
         { name: 'rrylText', title: 'RRYL Media — texte (accueil)', type: 'text', rows: 3 },
         { name: 'rrylCtaLabel', title: 'RRYL Media — texte du bouton', type: 'string' },
+        { name: 'rrylHeroImage', title: "RRYL Media — image de fond (hero page dédiée)", type: 'image', options: { hotspot: true } },
+        { name: 'rrylPageLead', title: 'RRYL Media — phrase d’accroche (après le nom)', type: 'text', rows: 2 },
         { name: 'rrylPageIntro', title: 'RRYL Media — intro (page dédiée)', type: 'text', rows: 4 },
         { name: 'newsEyebrow', title: 'Actualités — surtitre', type: 'string' },
         { name: 'newsTitle', title: 'Actualités — titre (ligne 1)', type: 'string' },

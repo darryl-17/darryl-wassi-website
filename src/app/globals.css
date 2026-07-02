@@ -374,11 +374,26 @@ html.lenis,html.lenis body{height:auto}
 
 /* ---------- RRYL Media — page dédiée ---------- */
 .rrylpage{background:radial-gradient(60% 60% at 50% 0%,rgba(144,238,144,.08),transparent 60%),var(--black)}
-.rrylpage__hero{max-width:var(--max);margin:0 auto;padding:clamp(4rem,10vh,8rem) var(--pad-x) clamp(2.5rem,5vw,4rem)}
-.rrylpage__title{font-family:var(--font-display);text-transform:uppercase;font-size:clamp(2.6rem,9vw,7rem);line-height:.9;letter-spacing:-.01em;margin:.4rem 0 .6rem;background:linear-gradient(120deg,#fff 30%,var(--accent-glow));-webkit-background-clip:text;background-clip:text;color:transparent}
-.rrylpage__tagline{font-family:var(--font-head);font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--accent);font-size:clamp(.9rem,1.7vw,1.2rem);margin-bottom:1.4rem}
-.rrylpage__intro{color:var(--grey);font-size:clamp(1.05rem,1.6vw,1.35rem);line-height:1.6;max-width:64ch}
-.rrylpage__intro p+p{margin-top:1em}
+/* Hero plein écran (image de fond + texte animé) */
+.rhero{position:relative;min-height:100svh;display:flex;flex-direction:column;justify-content:center;padding:0 var(--pad-x);overflow:hidden;background:var(--black)}
+.rhero__bg{position:absolute;inset:0;z-index:0;background-size:cover;background-position:center;background-repeat:no-repeat}
+.rhero__overlay{position:absolute;inset:0;z-index:1;background:radial-gradient(70% 60% at 50% 45%,rgba(5,5,6,.35),rgba(5,5,6,.72))}
+.rhero__content{position:relative;z-index:2;width:100%;max-width:var(--max);margin:0 auto;text-align:center;display:flex;justify-content:center}
+.rhero__title{position:relative;display:flex;align-items:center;justify-content:center;width:100%;height:1.02em;font-family:var(--font-display);font-weight:400;text-transform:uppercase;font-size:clamp(2.6rem,15vw,11rem);line-height:.9;letter-spacing:-.02em}
+.rhero__cycle{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;color:var(--accent);white-space:nowrap;will-change:transform,opacity,filter;text-shadow:0 4px 24px rgba(0,0,0,.45),0 1px 4px rgba(0,0,0,.35)}
+.rhero__scroll{position:absolute;bottom:2rem;left:50%;transform:translateX(-50%);z-index:3;display:flex;flex-direction:column;align-items:center;gap:.7rem;font-size:.68rem;letter-spacing:.3em;text-transform:uppercase;color:var(--grey)}
+.rhero__scroll svg{color:var(--accent);animation:scrollBounce 1.8s var(--ease) infinite}
+
+/* Présentation (structure image 2) */
+.rpres{position:relative;overflow:hidden;background:var(--black);border-top:1px solid var(--line);padding:clamp(4rem,9vw,8rem) var(--pad-x)}
+.rpres__backdrop{position:absolute;inset:0;z-index:0;display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;width:52%;margin-left:auto;padding:1.5rem;opacity:.28;filter:grayscale(.25) brightness(.7);-webkit-mask-image:linear-gradient(90deg,transparent,#000 40%);mask-image:linear-gradient(90deg,transparent,#000 40%);pointer-events:none}
+.rpres__tile{background:var(--g);background-size:cover;background-position:center;border-radius:10px;aspect-ratio:16/10}
+.rpres__inner{position:relative;z-index:2;max-width:var(--max);margin:0 auto}
+.rpres__title{font-family:var(--font-head);font-weight:800;text-transform:uppercase;font-size:clamp(1.5rem,3.4vw,2.9rem);line-height:1.12;letter-spacing:-.01em;color:var(--white);max-width:22ch}
+.rpres__title .accent{color:var(--accent)}
+.rpres__body{margin-top:clamp(1.5rem,3vw,2.4rem);color:var(--grey);font-size:clamp(1rem,1.3vw,1.15rem);line-height:1.65;max-width:60ch}
+.rpres__body p+p{margin-top:1em}
+@media (max-width:680px){.rpres__backdrop{width:100%;opacity:.12}}
 .rrylpage__shows{max-width:var(--max);margin:0 auto;padding:clamp(2rem,5vw,4rem) var(--pad-x) clamp(4rem,8vw,7rem)}
 .rrylpage__shows .section-title{margin-bottom:clamp(2.5rem,5vw,4rem)}
 .showlist{display:flex;flex-direction:column;gap:clamp(2rem,4vw,3.5rem)}

@@ -73,6 +73,8 @@ export type SectionsContent = {
   rrylTagline: string;
   rrylText: string;
   rrylCtaLabel: string;
+  rrylHeroImageUrl: string;
+  rrylPageLead: string;
   rrylPageIntro: string;
   newsEyebrow: string;
   newsTitle: string;
@@ -146,8 +148,11 @@ export const fallbackContent: SiteContent = {
       rrylText:
         "RRYL Media Service est une entreprise dédiée à l'univers de la création, de l'entrepreneuriat et du digital. À travers nos émissions, nous donnons la parole aux entrepreneurs, créateurs et passionnés qui façonnent le monde de demain.",
       rrylCtaLabel: 'En savoir plus',
+      rrylHeroImageUrl: '',
+      rrylPageLead:
+        "est une entreprise dédiée à l'univers de la création, de l'entrepreneuriat et du digital.",
       rrylPageIntro:
-        "RRYL Media Service est une entreprise dédiée à l'univers de la création, de l'entrepreneuriat et du digital. À travers nos émissions, nous donnons la parole aux entrepreneurs, créateurs et passionnés qui façonnent le monde de demain.\nEntre discussions inspirantes, conseils pratiques et réflexions profondes sur les défis du monde moderne, RRYL Media Service se veut un espace d'échanges authentiques et de partage d'expériences réelles.\nNotre mission : informer, inspirer et motiver une nouvelle génération d'esprits créatifs et ambitieux à travers des contenus audio percutants, humains et ancrés dans la réalité.",
+        "À travers nos émissions, nous donnons la parole aux entrepreneurs, créateurs et passionnés qui façonnent le monde de demain.\nEntre discussions inspirantes, conseils pratiques et réflexions profondes sur les défis du monde moderne, RRYL Media Service se veut un espace d'échanges authentiques et de partage d'expériences réelles.\nNotre mission : informer, inspirer et motiver une nouvelle génération d'esprits créatifs et ambitieux à travers des contenus audio percutants, humains et ancrés dans la réalité.",
       newsEyebrow: '06 — News & Stories',
       newsTitle: 'ACTUALITÉS',
       newsTitleAccent: '& CONTENUS',

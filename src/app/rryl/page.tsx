@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import SmoothScroll from '@/components/SmoothScroll';
 import Reveal from '@/components/Reveal';
+import RrylHero from '@/components/RrylHero';
 import Footer from '@/components/Footer';
 import { getSiteContent } from '@/sanity/queries';
 
@@ -100,23 +101,39 @@ export default async function RrylPage() {
       </header>
 
       <main className="rrylpage">
-        <section className="rrylpage__hero">
-          <Reveal>
-            <p className="section-index">{s.rrylEyebrow}</p>
-          </Reveal>
-          <Reveal delay={0.05}>
-            <h1 className="rrylpage__title">{s.rrylLogo}</h1>
-          </Reveal>
-          <Reveal delay={0.1}>
-            <p className="rrylpage__tagline">{s.rrylTagline}</p>
-          </Reveal>
-          <Reveal delay={0.15}>
-            <div className="rrylpage__intro">
-              {s.rrylPageIntro.split('\n').filter(Boolean).map((para, i) => (
-                <p key={i}>{para}</p>
-              ))}
-            </div>
-          </Reveal>
+        <RrylHero logo={s.rrylLogo} imageUrl={s.rrylHeroImageUrl || undefined} />
+
+        {/* Présentation (structure de l'image 2) */}
+        <section className="rpres">
+          <div className="rpres__backdrop" aria-hidden="true">
+            {shows.slice(0, 6).map((sh) => (
+              <div
+                key={sh._id}
+                className="rpres__tile"
+                style={
+                  {
+                    ['--g' as string]: sh.imageUrl
+                      ? `url('${sh.imageUrl}')`
+                      : sh.accent || 'linear-gradient(135deg,#1a1a1a,#3a3a3a)',
+                  } as React.CSSProperties
+                }
+              />
+            ))}
+          </div>
+          <div className="rpres__inner">
+            <Reveal>
+              <h2 className="rpres__title">
+                <span className="accent">{s.rrylLogo}</span> {s.rrylPageLead}
+              </h2>
+            </Reveal>
+            <Reveal delay={0.1}>
+              <div className="rpres__body">
+                {s.rrylPageIntro.split('\n').filter(Boolean).map((para, i) => (
+                  <p key={i}>{para}</p>
+                ))}
+              </div>
+            </Reveal>
+          </div>
         </section>
 
         <section className="rrylpage__shows">
