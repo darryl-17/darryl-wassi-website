@@ -130,11 +130,11 @@ export const fallbackContent: SiteContent = {
     sections: {
       aboutEyebrow: '01 — À propos',
       venturesEyebrow: '02 — Ce que je construis',
-      venturesTitle: 'VENTURES',
-      venturesTitleAccent: '& PRODUITS',
+      venturesTitle: 'Ventures',
+      venturesTitleAccent: '& produits',
       timelineEyebrow: "03 — D'où je viens",
-      timelineTitle: 'LE',
-      timelineTitleAccent: 'PARCOURS',
+      timelineTitle: 'Le',
+      timelineTitleAccent: 'parcours',
       spotlightEyebrow: '04 — Projet phare',
       spotlightLogo: 'LINGUA AFRIKA',
       spotlightTagline: 'Aucune langue ne devrait disparaître faute de technologie.',
@@ -154,9 +154,9 @@ export const fallbackContent: SiteContent = {
       rrylPageIntro:
         "À travers nos émissions, nous donnons la parole aux entrepreneurs, créateurs et passionnés qui façonnent le monde de demain.\nEntre discussions inspirantes, conseils pratiques et réflexions profondes sur les défis du monde moderne, RRYL Media Service se veut un espace d'échanges authentiques et de partage d'expériences réelles.\nNotre mission : informer, inspirer et motiver une nouvelle génération d'esprits créatifs et ambitieux à travers des contenus audio percutants, humains et ancrés dans la réalité.",
       newsEyebrow: '06 — News & Stories',
-      newsTitle: 'ACTUALITÉS',
-      newsTitleAccent: '& CONTENUS',
-      newsletterTitle: 'RESTONS CONNECTÉS',
+      newsTitle: 'Actualités',
+      newsTitleAccent: '& contenus',
+      newsletterTitle: 'Restons connectés',
       newsletterLead:
         'Remplissez le formulaire ci-dessous pour rester informé·e des dernières actualités, idées et projets de Darryl Wassi.',
     },

@@ -1,9 +1,8 @@
 import type { Metadata, Viewport } from 'next';
-import { Anton, Archivo, Space_Grotesk } from 'next/font/google';
+import { Archivo, Space_Grotesk } from 'next/font/google';
+import { GeistSans } from 'geist/font/sans';
 import CookieConsent from '@/components/CookieConsent';
 import './globals.css';
-
-const anton = Anton({ subsets: ['latin'], weight: '400', variable: '--font-anton', display: 'swap' });
 const archivo = Archivo({
   subsets: ['latin'],
   weight: ['400', '500', '600', '700', '800', '900'],
@@ -43,7 +42,7 @@ export const viewport: Viewport = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="fr" className={`${anton.variable} ${archivo.variable} ${grotesk.variable}`}>
+    <html lang="fr" className={`${GeistSans.variable} ${archivo.variable} ${grotesk.variable}`}>
       <body>
         {children}
         <CookieConsent />

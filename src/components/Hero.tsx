@@ -1,6 +1,6 @@
 'use client';
 
-import { AnimatePresence, motion, useScroll, useTransform } from 'framer-motion';
+import { motion, useScroll, useTransform } from 'framer-motion';
 import { useEffect, useRef, useState } from 'react';
 import type { SiteSettings } from '@/lib/fallback';
 
@@ -14,21 +14,14 @@ export default function Hero({ settings }: { settings: SiteSettings }) {
   const mediaScale = useTransform(scrollYProgress, [0, 1], [1.05, 1.15]);
   const contentOpacity = useTransform(scrollYProgress, [0, 0.7], [1, 0]);
 
-  // Two words from the full name; cycle every 3 seconds.
-  const parts = settings.name.toUpperCase().split(' ');
-  const words = parts.length >= 2 ? parts : [settings.name.toUpperCase(), settings.tagline.toUpperCase()];
-  const [index, setIndex] = useState(0);
+  // Name split over two lines (Freight-style static title, bottom-left).
+  const nameLines = settings.name.split(' ');
   // True once the main hero video has its first frame ready → crossfade from placeholder.
   const [videoReady, setVideoReady] = useState(false);
 
   const placeholderVideo = settings.heroPlaceholderVideoUrl;
   const placeholderImage = settings.heroPlaceholderImageUrl;
   const hasPlaceholder = Boolean(settings.heroVideoUrl && (placeholderVideo || placeholderImage));
-
-  useEffect(() => {
-    const id = setInterval(() => setIndex((v) => (v + 1) % words.length), 3000);
-    return () => clearInterval(id);
-  }, [words.length]);
 
   // Force the hero video to autoplay on every device (React doesn't reliably set
   // the `muted` DOM property, which mobile browsers require to allow autoplay).
@@ -90,22 +83,49 @@ export default function Hero({ settings }: { settings: SiteSettings }) {
         <div className="hero__vignette" />
       </motion.div>
 
-      <motion.div className="hero__content" style={{ opacity: contentOpacity }}>
-        <h1 className="hero__title" aria-label={settings.name}>
-          <AnimatePresence>
-            <motion.span
-              key={words[index]}
-              className="hero__cycle"
-              aria-hidden="true"
-              initial={{ opacity: 0, y: 60, filter: 'blur(10px)' }}
-              animate={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
-              exit={{ opacity: 0, y: -60, filter: 'blur(10px)' }}
-              transition={{ duration: 0.8, ease: EASE }}
-            >
-              {words[index]}
-            </motion.span>
-          </AnimatePresence>
-        </h1>
+      <motion.div className="hero__content hero__content--freight" style={{ opacity: contentOpacity }}>
+        <motion.div
+          className="hero__crumb"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 0.9, duration: 0.8, ease: EASE }}
+        >
+          <span className="hero__crumb-label">＋ Accueil</span>
+          <span className="hero__hairline" aria-hidden="true" />
+        </motion.div>
+
+        <div className="hero__row">
+          <h1 className="hero__name" aria-label={settings.name}>
+            {nameLines.map((line, i) => (
+              <span className="hero__line" key={line + i}>
+                <motion.span
+                  style={{ display: 'block' }}
+                  initial={{ y: '110%' }}
+                  animate={{ y: 0 }}
+                  transition={{ duration: 1.1, ease: EASE, delay: 0.15 + i * 0.1 }}
+                >
+                  {line}
+                  {i === 0 && nameLines.length > 1 ? ',' : ''}
+                </motion.span>
+              </span>
+            ))}
+          </h1>
+
+          <motion.div
+            className="hero__aside"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.7, duration: 1, ease: EASE }}
+          >
+            <p>
+              <span className="hero__aside-glyph" aria-hidden="true">↳</span>
+              {settings.quote}
+            </p>
+            <a href="/contact" className="btn btn--solid">
+              Me contacter <span className="btn__arrow">→</span>
+            </a>
+          </motion.div>
+        </div>
       </motion.div>
 
       <a href="#manifeste" className="hero__scroll" aria-label="Défiler vers le bas">
