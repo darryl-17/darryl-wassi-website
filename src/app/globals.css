@@ -95,9 +95,8 @@ html.lenis,html.lenis body{height:auto}
 .hero__placeholder{position:absolute;inset:0;z-index:1;opacity:1;transition:opacity 1.1s var(--ease)}
 .hero__placeholder.is-hidden{opacity:0;pointer-events:none}
 .hero__placeholder video,.hero__placeholder-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;background-size:cover;background-position:center}
-.hero__grid-overlay,.hero__vignette{z-index:2}
+.hero__vignette{z-index:2}
 .hero__media::after{content:"";position:absolute;inset:0;z-index:-1;background:radial-gradient(60% 80% at 70% 20%,rgba(144,238,144,.22),transparent 60%),radial-gradient(50% 60% at 20% 90%,rgba(144,238,144,.1),transparent 70%),linear-gradient(180deg,#07080b,#050506)}
-.hero__grid-overlay{position:absolute;inset:0;background-image:linear-gradient(var(--line) 1px,transparent 1px),linear-gradient(90deg,var(--line) 1px,transparent 1px);background-size:64px 64px;-webkit-mask-image:radial-gradient(circle at 50% 45%,#000 30%,transparent 80%);mask-image:radial-gradient(circle at 50% 45%,#000 30%,transparent 80%);opacity:.5}
 .hero__vignette{position:absolute;inset:0;background:radial-gradient(80% 80% at 50% 50%,transparent 45%,rgba(0,0,0,.05))}
 /* Hero façon Freight : titre en bas à gauche, accroche + bouton à droite */
 .hero{justify-content:flex-end}
@@ -195,7 +194,6 @@ html.lenis,html.lenis body{height:auto}
 /* ---------- 5. spotlight ---------- */
 .spotlight{position:relative;padding:clamp(6rem,14vh,12rem) var(--pad-x);overflow:hidden;border-top:1px solid var(--line)}
 .spotlight__bg{position:absolute;inset:0;z-index:0;background:var(--black)}
-.spotlight__bg::after{content:"";position:absolute;inset:0;background-image:linear-gradient(var(--line) 1px,transparent 1px),linear-gradient(90deg,var(--line) 1px,transparent 1px);background-size:80px 80px;opacity:.4;-webkit-mask-image:radial-gradient(circle at 70% 30%,#000,transparent 75%);mask-image:radial-gradient(circle at 70% 30%,#000,transparent 75%)}
 .spotlight__inner{position:relative;z-index:1;max-width:var(--max);margin:0 auto;display:grid;grid-template-columns:1.05fr .95fr;gap:clamp(2rem,6vw,5rem);align-items:center}
 .spotlight__logo{font-family:var(--font-display);text-transform:uppercase;font-size:clamp(2.4rem,6vw,5.5rem);line-height:.9;letter-spacing:-.01em;margin-bottom:1.8rem;background:linear-gradient(120deg,#0b0b0c 30%,var(--accent-ink));-webkit-background-clip:text;background-clip:text;color:transparent}
 .spotlight__tagline{font-family:var(--font-head);font-weight:600;font-size:clamp(1.4rem,3vw,2.4rem);line-height:1.15;letter-spacing:-.01em;margin-bottom:1.5rem;max-width:18ch}

@@ -79,7 +79,6 @@ export default function Hero({ settings }: { settings: SiteSettings }) {
           </div>
         )}
 
-        <div className="hero__grid-overlay" />
         <div className="hero__vignette" />
       </motion.div>
 
