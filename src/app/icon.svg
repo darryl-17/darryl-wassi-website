@@ -1,4 +1,12 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="100" height="100">
-  <rect width="100" height="100" rx="24" fill="#0b0b0c"/>
-  <path fill="#90ee90" fill-rule="evenodd" d="M26 24 H46 C62 24 74 36 74 50 C74 64 62 76 46 76 H26 Z M40 38 H46 C54 38 59 43 59 50 C59 57 54 62 46 62 H40 Z"/>
+  <defs>
+    <linearGradient id="glass" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#c9f7c9"/>
+      <stop offset="1" stop-color="#8fe98f"/>
+    </linearGradient>
+  </defs>
+  <rect width="100" height="100" rx="24" fill="url(#glass)"/>
+  <rect x="5" y="4" width="90" height="36" rx="18" fill="#ffffff" opacity="0.2"/>
+  <path fill="#0b0b0c" fill-rule="evenodd" d="M26 24 H46 C62 24 74 36 74 50 C74 64 62 76 46 76 H26 Z M40 38 H46 C54 38 59 43 59 50 C59 57 54 62 46 62 H40 Z"/>
+  <rect x="1.25" y="1.25" width="97.5" height="97.5" rx="22.75" fill="none" stroke="#ffffff" stroke-opacity="0.5" stroke-width="1.5"/>
 </svg>

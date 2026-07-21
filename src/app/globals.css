@@ -46,12 +46,18 @@ html.lenis,html.lenis body{height:auto}
 .btn{display:inline-flex;align-items:center;gap:.7rem;font-family:var(--font-head);font-weight:600;font-size:clamp(.85rem,1vw,.95rem);letter-spacing:.02em;text-transform:none;padding:1rem 1.7rem;border-radius:12px;transition:transform .5s var(--ease),background .4s,color .4s,border-color .4s,box-shadow .4s;cursor:pointer;border:0}
 .btn__arrow{transition:transform .5s var(--ease)}
 .btn:hover .btn__arrow{transform:translateX(6px)}
-.btn--ghost{border:1px solid var(--line-strong);color:var(--white);background:transparent}
-.btn--ghost:hover{border-color:var(--white);transform:translateY(-3px)}
-/* Style façon Freight : bouton plein, rectangle arrondi */
-.btn--solid{background:var(--accent);color:#06140a;border:1.5px solid var(--accent)}
-.btn--solid:hover{background:var(--accent-glow);border-color:var(--accent-ink);transform:translateY(-3px);box-shadow:0 18px 50px -12px rgba(144,238,144,.45)}
+/* Tous les boutons : effet verre dépoli (comme le menu déroulant) */
+.btn--solid,.btn--ghost{-webkit-backdrop-filter:blur(18px) saturate(1.4);backdrop-filter:blur(18px) saturate(1.4);border:1.5px solid rgba(255,255,255,.35)}
+.btn--solid{background:rgba(144,238,144,.68);color:#06140a}
+.btn--solid:hover{background:rgba(144,238,144,.85);border-color:rgba(255,255,255,.55);transform:translateY(-3px);box-shadow:0 18px 50px -12px rgba(144,238,144,.5)}
+.btn--ghost{background:rgba(144,238,144,.42);color:var(--white)}
+.btn--ghost:hover{background:rgba(144,238,144,.62);border-color:rgba(255,255,255,.55);transform:translateY(-3px)}
 .btn--lg{padding:1.25rem 2.4rem;font-size:1rem}
+/* Repli si backdrop-filter non supporté : fonds quasi opaques (texte lisible) */
+@supports not ((backdrop-filter:blur(1px)) or (-webkit-backdrop-filter:blur(1px))){
+  .btn--solid{background:var(--accent)}
+  .btn--ghost{background:rgba(144,238,144,.9)}
+}
 
 /* ---------- progress + nav ---------- */
 .scroll-progress{position:fixed;top:0;left:0;height:2px;background:var(--accent);z-index:200;box-shadow:0 0 12px var(--accent-glow);transform-origin:0 50%}
@@ -64,8 +70,8 @@ html.lenis,html.lenis body{height:auto}
 .nav__links{display:none}
 .nav__links a{font-family:var(--font-head);font-size:.82rem;letter-spacing:.08em;text-transform:uppercase;font-weight:500;color:var(--grey);transition:color .3s}
 .nav__links a:hover{color:var(--white)}
-.nav__cta{color:var(--white)!important;border:1px solid var(--line-strong);padding:.6rem 1.15rem;border-radius:100px;transition:border-color .3s,background .3s!important}
-.nav__cta:hover{border-color:var(--accent-ink);background:var(--accent);color:#06140a!important}
+.nav__cta{color:var(--white)!important;border:1px solid rgba(255,255,255,.35);background:rgba(144,238,144,.55);-webkit-backdrop-filter:blur(14px) saturate(1.35);backdrop-filter:blur(14px) saturate(1.35);padding:.6rem 1.15rem;border-radius:100px;transition:border-color .3s,background .3s!important}
+.nav__cta:hover{border-color:rgba(255,255,255,.55);background:rgba(144,238,144,.78);color:#06140a!important}
 .nav__burger{display:flex;flex-direction:column;gap:5px;background:none;border:0;cursor:pointer;padding:8px;color:inherit}
 .nav__burger span{width:24px;height:2px;background:currentColor;transition:.4s var(--ease)}
 .nav__burger.open span:nth-child(1){transform:translateY(7px) rotate(45deg)}
@@ -261,8 +267,8 @@ html.lenis,html.lenis body{height:auto}
 .cookie__btn{font-family:var(--font-head);font-weight:700;font-size:.85rem;letter-spacing:.04em;text-transform:uppercase;padding:.85rem 1.6rem;border-radius:100px;cursor:pointer;transition:transform .35s var(--ease),background .3s,color .3s,border-color .3s}
 .cookie__btn--refuse{background:transparent;color:var(--white);border:1.5px solid var(--line-strong)}
 .cookie__btn--refuse:hover{border-color:var(--white);transform:translateY(-2px)}
-.cookie__btn--accept{background:var(--accent);color:#06140a;border:1.5px solid var(--accent)}
-.cookie__btn--accept:hover{background:var(--accent-glow);transform:translateY(-2px)}
+.cookie__btn--accept{background:rgba(144,238,144,.85);color:#06140a;border:1.5px solid rgba(255,255,255,.4);-webkit-backdrop-filter:blur(14px) saturate(1.35);backdrop-filter:blur(14px) saturate(1.35)}
+.cookie__btn--accept:hover{background:rgba(144,238,144,.96);transform:translateY(-2px)}
 .footer__cookies-link{font:inherit;color:var(--grey-dim);background:none;border:0;padding:0;cursor:pointer;transition:color .3s}
 .footer__cookies-link:hover{color:var(--white)}
 @media (max-width:560px){
@@ -356,8 +362,13 @@ html.lenis,html.lenis body{height:auto}
 .newsletter--accent .newsletter__input{background:rgba(0,0,0,.05);border-color:rgba(0,0,0,.25);color:#06140a}
 .newsletter--accent .newsletter__input::placeholder{color:rgba(0,0,0,.5)}
 .newsletter--accent .newsletter__input:focus{border-color:#000}
-.newsletter--accent .newsletter__btn{background:var(--accent);color:#000;border:1.5px solid #000}
-.newsletter--accent .newsletter__btn:hover{background:var(--accent-glow);transform:translateY(-3px)}
+/* Sur le panneau vert, verre blanc translucide pour rester visible + lisible */
+.newsletter--accent .newsletter__btn{background:rgba(255,255,255,.2);color:#000;border:1.5px solid #000;-webkit-backdrop-filter:blur(14px) saturate(1.25);backdrop-filter:blur(14px) saturate(1.25)}
+.newsletter--accent .newsletter__btn:hover{background:rgba(255,255,255,.36);transform:translateY(-3px)}
+@supports not ((backdrop-filter:blur(1px)) or (-webkit-backdrop-filter:blur(1px))){
+  .newsletter--accent .newsletter__btn{background:var(--accent)}
+  .cookie__btn--accept{background:var(--accent)}
+}
 @media (max-width:680px){
   .contactpage__grid{grid-template-columns:1fr}
   .newsletter__form{flex-direction:column;align-items:stretch}
