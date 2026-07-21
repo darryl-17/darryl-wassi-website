@@ -6,8 +6,16 @@ import { OrbitControls, Html } from '@react-three/drei';
 import * as THREE from 'three';
 import rawPoints from '@/lib/globe-points.json';
 
-/* Charte : vert accent #90ee90, sombre #0b0b0c */
-const ACCENT = '#90ee90';
+/* Thème clair du site — globe non noir, vert de la charte.
+   DOT/LINE/RIM = vert foncé lisible sur clair (#2e8f46 = --accent-ink) ;
+   SPHERE = sphère claire pour donner du volume sans paraître noire. */
+const DOT = '#2e8f46';
+const LINE = '#2e8f46';
+const RIM = '#2e8f46';
+const SPHERE = '#eef2ec';
+const PIN_HALO = '#90ee90';
+const PIN_CORE = '#1f7a3c';
+const PIN_RING = '#2e8f46';
 const R = 1; // rayon du globe
 const DEG = Math.PI / 180;
 
@@ -70,11 +78,11 @@ function Continents() {
       </bufferGeometry>
       <pointsMaterial
         map={dot}
-        color={ACCENT}
-        size={0.028}
+        color={DOT}
+        size={0.026}
         sizeAttenuation
         transparent
-        opacity={0.92}
+        opacity={0.95}
         alphaTest={0.35}
         depthWrite={false}
       />
@@ -88,10 +96,10 @@ function Atmosphere() {
     () =>
       new THREE.ShaderMaterial({
         transparent: true,
-        blending: THREE.AdditiveBlending,
+        blending: THREE.NormalBlending,
         side: THREE.BackSide,
         depthWrite: false,
-        uniforms: { uColor: { value: new THREE.Color(ACCENT) } },
+        uniforms: { uColor: { value: new THREE.Color(RIM) } },
         vertexShader: `
           varying vec3 vNormal;
           varying vec3 vView;
@@ -107,8 +115,8 @@ function Atmosphere() {
           uniform vec3 uColor;
           void main(){
             vec3 v = normalize(-vView);
-            float f = pow(1.0 - abs(dot(vNormal, v)), 3.2);
-            gl_FragColor = vec4(uColor, f * 0.75);
+            float f = pow(1.0 - abs(dot(vNormal, v)), 3.0);
+            gl_FragColor = vec4(uColor, f * 0.4);
           }`,
       }),
     []
@@ -144,17 +152,17 @@ function Marker({ animate, occlude }: { animate: boolean; occlude: RefObject<THR
     <group position={pos}>
       <mesh>
         <sphereGeometry args={[0.028, 16, 16]} />
-        <meshBasicMaterial color={ACCENT} transparent opacity={0.35} />
+        <meshBasicMaterial color={PIN_HALO} transparent opacity={0.45} />
       </mesh>
       <mesh>
         <sphereGeometry args={[0.014, 16, 16]} />
-        <meshBasicMaterial color={'#eafff0'} />
+        <meshBasicMaterial color={PIN_CORE} />
       </mesh>
       <mesh ref={ringRef}>
         <ringGeometry args={[0.7, 1, 40]} />
         <meshBasicMaterial
           ref={matRef}
-          color={ACCENT}
+          color={PIN_RING}
           transparent
           opacity={0.6}
           side={THREE.DoubleSide}
@@ -174,7 +182,7 @@ function Graticule() {
   return (
     <lineSegments>
       <wireframeGeometry args={[geo]} />
-      <lineBasicMaterial color={ACCENT} transparent opacity={0.06} depthWrite={false} />
+      <lineBasicMaterial color={LINE} transparent opacity={0.1} depthWrite={false} />
     </lineSegments>
   );
 }
@@ -214,17 +222,17 @@ function Scene({ reduced }: { reduced: boolean }) {
   const globeRef = useRef<THREE.Mesh>(null);
   return (
     <>
-      <ambientLight intensity={0.55} />
-      <directionalLight position={[3, 2, 4]} intensity={1.1} />
-      <directionalLight position={[-4, -1, -2]} intensity={0.25} color={ACCENT} />
+      <ambientLight intensity={0.9} />
+      <directionalLight position={[3, 2, 4]} intensity={0.55} />
+      <directionalLight position={[-4, -1, -2]} intensity={0.12} color={PIN_HALO} />
       <mesh ref={globeRef}>
         <sphereGeometry args={[R, 64, 64]} />
         <meshStandardMaterial
-          color={'#0c130e'}
-          roughness={0.95}
+          color={SPHERE}
+          roughness={1}
           metalness={0}
-          emissive={'#04120a'}
-          emissiveIntensity={0.4}
+          emissive={'#dfeee2'}
+          emissiveIntensity={0.12}
         />
       </mesh>
       <Graticule />

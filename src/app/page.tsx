@@ -26,10 +26,10 @@ export default async function Home() {
         <Manifesto settings={settings} />
         <Ventures ventures={ventures} sections={settings.sections} />
         <Timeline items={timeline.slice(0, 4)} showCta sections={settings.sections} />
+        <GlobeSection />
         <Spotlight sections={settings.sections} />
         <RrylIntro shows={shows} sections={settings.sections} />
         <News news={news} sections={settings.sections} />
-        <GlobeSection />
         <Newsletter sections={settings.sections} />
       </main>
       <Footer settings={settings} />
