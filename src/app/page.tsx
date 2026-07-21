@@ -7,6 +7,7 @@ import Timeline from '@/components/Timeline';
 import Spotlight from '@/components/Spotlight';
 import RrylIntro from '@/components/RrylIntro';
 import News from '@/components/News';
+import GlobeSection from '@/components/GlobeSection';
 import Newsletter from '@/components/Newsletter';
 import Footer from '@/components/Footer';
 import { getSiteContent } from '@/sanity/queries';
@@ -28,6 +29,7 @@ export default async function Home() {
         <Spotlight sections={settings.sections} />
         <RrylIntro shows={shows} sections={settings.sections} />
         <News news={news} sections={settings.sections} />
+        <GlobeSection />
         <Newsletter sections={settings.sections} />
       </main>
       <Footer settings={settings} />
