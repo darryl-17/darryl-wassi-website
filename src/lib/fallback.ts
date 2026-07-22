@@ -147,7 +147,7 @@ export const fallbackContent: SiteContent = {
       rrylTagline: 'Médias et télécommunications',
       rrylText:
         "RRYL Media Service est une entreprise dédiée à l'univers de la création, de l'entrepreneuriat et du digital. À travers nos émissions, nous donnons la parole aux entrepreneurs, créateurs et passionnés qui façonnent le monde de demain.",
-      rrylCtaLabel: 'En savoir plus',
+      rrylCtaLabel: 'Découvrir nos émissions',
       rrylHeroImageUrl: '',
       rrylPageLead:
         "est une entreprise dédiée à l'univers de la création, de l'entrepreneuriat et du digital.",
