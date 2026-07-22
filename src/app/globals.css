@@ -421,7 +421,7 @@ html.lenis,html.lenis body{height:auto}
 
 /* Présentation (structure image 2) */
 .rpres{position:relative;overflow:hidden;background:var(--black);border-top:1px solid var(--line);padding:clamp(4rem,9vw,8rem) var(--pad-x)}
-.rpres__backdrop{position:absolute;inset:0;z-index:0;display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;width:52%;margin-left:auto;padding:1.5rem;opacity:.28;filter:grayscale(.25) brightness(.7);-webkit-mask-image:linear-gradient(90deg,transparent,#000 40%);mask-image:linear-gradient(90deg,transparent,#000 40%);pointer-events:none}
+.rpres__backdrop{position:absolute;inset:0;z-index:0;display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;width:52%;margin-left:auto;padding:1.5rem;opacity:.28;filter:grayscale(.25) brightness(.7);-webkit-mask-image:linear-gradient(90deg,transparent 0%,rgba(0,0,0,.5) 55%,#000 95%),linear-gradient(180deg,transparent 0%,#000 16%,#000 84%,transparent 100%);-webkit-mask-composite:source-in;mask-image:linear-gradient(90deg,transparent 0%,rgba(0,0,0,.5) 55%,#000 95%),linear-gradient(180deg,transparent 0%,#000 16%,#000 84%,transparent 100%);mask-composite:intersect;pointer-events:none}
 .rpres__tile{background:var(--g);background-size:cover;background-position:center;border-radius:10px;aspect-ratio:16/10}
 .rpres__inner{position:relative;z-index:2;max-width:var(--max);margin:0 auto}
 .rpres__title{font-family:var(--font-head);font-weight:800;text-transform:uppercase;font-size:clamp(1.5rem,3.4vw,2.9rem);line-height:1.12;letter-spacing:-.01em;color:var(--white);max-width:22ch}
