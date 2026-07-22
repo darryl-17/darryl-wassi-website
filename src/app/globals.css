@@ -178,8 +178,14 @@ html.lenis,html.lenis body{height:auto}
 .tl2__desc{color:var(--grey);font-size:clamp(.9rem,1.1vw,1.02rem);max-width:44ch}
 .tl2__node{display:none}
 .tl2__cta{display:flex;justify-content:center;margin-top:clamp(2.5rem,5vw,4rem)}
-.subnav{position:sticky;top:0;z-index:150;display:flex;align-items:center;justify-content:space-between;padding:1.2rem var(--pad-x);background:rgba(244,245,243,.86);backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
-.subnav__back{font-family:var(--font-head);font-weight:600;font-size:.82rem;letter-spacing:.08em;text-transform:uppercase;color:var(--accent-ink);display:inline-flex;align-items:center;gap:.5rem;transition:gap .3s var(--ease)}
+.subnav{position:sticky;top:0;z-index:150;display:flex;align-items:center;justify-content:space-between;padding:1.2rem var(--pad-x);background:rgba(244,245,243,.86);-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);border-bottom:1px solid var(--line);transition:background .5s var(--ease),border-color .4s,padding .5s var(--ease),color .4s}
+/* Variante sur page à hero (image/vidéo) : transparente en haut, fond au scroll — comme la nav d'accueil */
+.subnav.is-hero{position:fixed;top:0;left:0;right:0;background:transparent;-webkit-backdrop-filter:none;backdrop-filter:none;border-bottom-color:transparent}
+.subnav.is-hero .subnav__back,.subnav.is-hero .subnav__brand .nav__name{color:#fff;text-shadow:0 2px 12px rgba(0,0,0,.35)}
+.subnav.is-hero.is-scrolled{background:rgba(244,245,243,.86);-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);border-bottom-color:var(--line)}
+.subnav.is-hero.is-scrolled .subnav__back{color:var(--accent-ink);text-shadow:none}
+.subnav.is-hero.is-scrolled .subnav__brand .nav__name{color:var(--white);text-shadow:none}
+.subnav__back{font-family:var(--font-head);font-weight:600;font-size:.82rem;letter-spacing:.08em;text-transform:uppercase;color:var(--accent-ink);display:inline-flex;align-items:center;gap:.5rem;transition:gap .3s var(--ease),color .4s}
 .subnav__back:hover{gap:.9rem}
 .subnav__brand{display:flex;align-items:center;gap:.7rem}
 @media (max-width:820px){

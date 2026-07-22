@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import SmoothScroll from '@/components/SmoothScroll';
 import Reveal from '@/components/Reveal';
 import RrylHero from '@/components/RrylHero';
+import SubNav from '@/components/SubNav';
 import Footer from '@/components/Footer';
 import { getSiteContent } from '@/sanity/queries';
 
@@ -91,14 +92,7 @@ export default async function RrylPage() {
   return (
     <>
       <SmoothScroll />
-      <header className="subnav">
-        <a href="/" className="subnav__back" aria-label="Retour à l'accueil">
-          <span aria-hidden="true">←</span> Accueil
-        </a>
-        <a href="/" className="subnav__brand">
-          <span className="nav__name">DARRYL WASSI</span>
-        </a>
-      </header>
+      <SubNav overHero />
 
       <main className="rrylpage">
         <RrylHero logo={s.rrylLogo} imageUrl={s.rrylHeroImageUrl || undefined} />
