@@ -455,29 +455,44 @@ html.lenis,html.lenis body{height:auto}
   .showrow__art{max-width:220px}
 }
 
-/* ============ Page À propos — galerie polaroid ============ */
-.apropos{min-height:100vh;padding:clamp(4rem,10vh,8rem) var(--pad-x) clamp(3rem,6vw,5rem);background:radial-gradient(70% 60% at 50% 0%,rgba(144,238,144,.08),transparent 60%),var(--black)}
+/* ============ Page À propos — constellation polaroid ============ */
+.apropos{min-height:100vh;padding:clamp(4rem,10vh,7rem) var(--pad-x) clamp(3rem,6vw,5rem);background:radial-gradient(70% 60% at 50% 0%,rgba(144,238,144,.08),transparent 60%),var(--black)}
 .apropos__head{max-width:var(--max);margin:0 auto;text-align:center}
-.apropos__title{font-family:var(--font-display);text-transform:uppercase;font-size:clamp(2.6rem,9vw,7rem);line-height:.9;letter-spacing:-.01em;color:var(--white)}
-.apropos__lead{color:var(--grey);font-size:clamp(1rem,1.4vw,1.2rem);max-width:52ch;margin:1.4rem auto 0}
-.polar-scatter{display:flex;flex-wrap:wrap;justify-content:center;align-items:center;gap:.4rem;max-width:1080px;margin:clamp(2.5rem,5vw,4.5rem) auto 0}
-.polar{appearance:none;border:0;background:none;padding:0;margin:clamp(-.9rem,-1.4vw,-.5rem);cursor:pointer;width:clamp(148px,20vw,220px);position:relative;z-index:1;transform:rotate(var(--rot,0deg));transition:transform .45s var(--ease),filter .45s;filter:drop-shadow(0 14px 24px rgba(11,11,12,.28))}
-.polar:hover,.polar:focus-visible{transform:rotate(0deg) translateY(-10px) scale(1.05);z-index:6;outline:none;filter:drop-shadow(0 26px 40px rgba(11,11,12,.4))}
-.polar__frame{display:block;background:#fdfdfb;padding:.55rem .55rem 0;border-radius:3px}
-.polar__media{display:block;width:100%;aspect-ratio:1/1;object-fit:cover;background:#e6e6e2;border-radius:1px}
-.polar__cap{display:block;text-align:center;padding:.55rem .2rem .7rem;font-family:var(--font-display);font-weight:500;font-size:.86rem;letter-spacing:-.01em;color:#26262a}
+.apropos__lead{font-family:var(--font-display);font-weight:500;color:var(--white);font-size:clamp(1.35rem,3.4vw,2.4rem);line-height:1.1;letter-spacing:-.02em;max-width:18ch;margin:0 auto}
+.apropos__lead .hl{color:var(--accent-ink)}
+/* Toile : polaroids dispersés autour du centre "MOI", reliés par des courbes animées */
+.about-web{position:relative;width:100%;max-width:min(92vw,720px);aspect-ratio:1/1;margin:clamp(2.5rem,6vw,5rem) auto 0}
+.about-web__lines{position:absolute;inset:0;width:100%;height:100%;z-index:1;overflow:visible;pointer-events:none}
+.aw-wire{fill:none;stroke:#2e8f46;stroke-opacity:.34;stroke-width:1.1;stroke-linecap:round;stroke-dasharray:3 7;animation:awflow 1.5s linear infinite}
+.aw-dot{fill:#90ee90;filter:drop-shadow(0 0 3px rgba(144,238,144,.9))}
+@keyframes awflow{to{stroke-dashoffset:-10}}
+.about-web__core{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);z-index:2;font-family:var(--font-display);font-weight:500;text-transform:uppercase;font-size:clamp(1.9rem,6.5vw,3.6rem);letter-spacing:.02em;color:var(--white);display:grid;place-items:center;width:clamp(86px,15vw,128px);height:clamp(86px,15vw,128px);border-radius:50%;background:radial-gradient(circle,rgba(244,245,243,.92),rgba(244,245,243,0) 72%)}
+.about-web__core::before{content:"";position:absolute;inset:0;border-radius:50%;border:1px solid rgba(46,143,70,.35);animation:corePulse 3s var(--ease) infinite}
+@keyframes corePulse{0%,100%{transform:scale(1);opacity:.55}50%{transform:scale(1.16);opacity:0}}
+.polar{position:absolute;left:var(--x);top:var(--y);appearance:none;border:0;background:none;padding:0;cursor:pointer;width:clamp(104px,15vw,158px);z-index:3;transform:translate(-50%,-50%) rotate(var(--rot,-6deg));transition:transform .45s var(--ease),filter .45s;filter:drop-shadow(0 14px 24px rgba(11,11,12,.3))}
+.polar:hover,.polar:focus-visible{transform:translate(-50%,-50%) rotate(var(--rot,-6deg)) scale(1.09);z-index:8;outline:none;filter:drop-shadow(0 26px 42px rgba(11,11,12,.45))}
+.polar__frame{display:block;background:#f6f1e7;padding:.5rem .5rem 0;border-radius:3px}
+.polar__pic{position:relative;display:block;overflow:hidden;border-radius:1px}
+.polar__media{display:block;width:100%;aspect-ratio:1/1;object-fit:cover;background:#e6e6e2;filter:sepia(.34) contrast(1.06) brightness(1.02) saturate(.82)}
+.polar__grain,.polar-modal__grain{position:absolute;inset:0;pointer-events:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");background-size:120px 120px;opacity:.42;mix-blend-mode:multiply}
+.polar__cap{display:block;text-align:center;padding:.5rem .2rem .6rem;font-family:var(--font-display);font-weight:500;font-size:.78rem;letter-spacing:-.01em;color:#3a352c}
 /* Modale d'agrandissement */
-.polar-modal{position:fixed;inset:0;z-index:400;display:flex;align-items:center;justify-content:center;padding:clamp(1rem,4vw,3rem);background:rgba(11,11,12,.6);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px)}
-.polar-modal__card{position:relative;background:#fdfdfb;padding:clamp(.9rem,1.6vw,1.3rem) clamp(.9rem,1.6vw,1.3rem) 0;border-radius:4px;box-shadow:0 40px 90px -30px rgba(0,0,0,.7);max-width:min(92vw,520px);width:100%;max-height:92vh;overflow:auto}
+.polar-modal{position:fixed;inset:0;z-index:400;display:flex;align-items:center;justify-content:center;padding:clamp(1rem,4vw,3rem);background:rgba(11,11,12,.62);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px)}
+.polar-modal__card{position:relative;background:#f6f1e7;padding:clamp(.9rem,1.6vw,1.3rem) clamp(.9rem,1.6vw,1.3rem) 0;border-radius:4px;box-shadow:0 40px 90px -30px rgba(0,0,0,.7);max-width:min(92vw,520px);width:100%;max-height:92vh;overflow:auto}
 .polar-modal__frame{display:block}
-.polar-modal__media{display:block;width:100%;max-height:58vh;object-fit:cover;background:#e6e6e2;border-radius:2px}
-.polar-modal__cap{display:block;text-align:center;padding:.85rem .2rem .3rem;font-family:var(--font-display);font-weight:500;font-size:clamp(1.15rem,2.4vw,1.55rem);letter-spacing:-.015em;color:#1a1a1c}
+.polar-modal__pic{position:relative;display:block;overflow:hidden;border-radius:2px}
+.polar-modal__media{display:block;width:100%;max-height:56vh;object-fit:cover;background:#e6e6e2;filter:sepia(.34) contrast(1.06) brightness(1.02) saturate(.82)}
+.polar-modal__grain{background-size:160px 160px;opacity:.4}
+.polar-modal__cap{display:block;text-align:center;padding:.85rem .2rem .3rem;font-family:var(--font-display);font-weight:500;font-size:clamp(1.15rem,2.4vw,1.55rem);letter-spacing:-.015em;color:#231f18}
 .polar-modal__desc{color:#4c4f55;font-size:clamp(.95rem,1.4vw,1.08rem);line-height:1.6;padding:.5rem .4rem 1.3rem;text-align:center}
-.polar-modal__close{position:absolute;top:.6rem;right:.6rem;width:36px;height:36px;border-radius:50%;border:0;background:rgba(11,11,12,.08);color:#0b0b0c;font-size:.95rem;cursor:pointer;display:grid;place-items:center;transition:background .3s,transform .3s;z-index:2}
+.polar-modal__close{position:absolute;top:.6rem;right:.6rem;width:36px;height:36px;border-radius:50%;border:0;background:rgba(11,11,12,.1);color:#0b0b0c;font-size:.95rem;cursor:pointer;display:grid;place-items:center;transition:background .3s,transform .3s;z-index:2}
 .polar-modal__close:hover{background:var(--accent);transform:rotate(90deg)}
 @media (max-width:560px){
-  .polar{width:clamp(140px,42vw,190px);margin:-.4rem}
+  .about-web{max-width:96vw}
+  .polar{width:clamp(82px,25vw,120px)}
+  .about-web__core{font-size:clamp(1.4rem,8vw,2.2rem);width:clamp(70px,20vw,96px);height:clamp(70px,20vw,96px)}
 }
 @media (prefers-reduced-motion:reduce){
+  .aw-wire,.about-web__core::before{animation:none}
   .polar,.polar:hover{transition:none}
 }

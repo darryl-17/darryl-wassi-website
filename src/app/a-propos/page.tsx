@@ -75,12 +75,8 @@ export default async function AProposPage() {
 
       <main className="apropos">
         <div className="apropos__head">
-          <h1 className="apropos__title">
-            À<br />PROPOS
-          </h1>
           <p className="apropos__lead">
-            La personne derrière les projets — quelques instants, souvenirs et moments qui me
-            façonnent. Touchez un polaroid pour l’agrandir et lire son histoire.
+            Chaque histoire a un <span className="hl">début</span>.
           </p>
         </div>
 

@@ -1,7 +1,7 @@
 'use client';
 
 import { AnimatePresence, motion } from 'framer-motion';
-import { useEffect, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 
 export type Polaroid = {
   id: string;
@@ -13,8 +13,32 @@ export type Polaroid = {
 };
 
 const EASE = [0.16, 1, 0.3, 1] as const;
-// Rotations et petits décalages pour un éparpillement naturel façon photos posées.
-const ROT = [-6, 4, -3, 7, -5, 2, -4, 6, -2, 5];
+
+// Position (en %) de chaque polaroid, dispersée autour du centre (50,50).
+function positionFor(i: number, n: number) {
+  const ang = (-90 + (360 / n) * i) * (Math.PI / 180);
+  const rx = 40 + (i % 2 ? 4 : -4) + (i % 3 === 0 ? -3 : 0);
+  const ry = 36 + (i % 2 ? -3 : 5);
+  return { x: 50 + Math.cos(ang) * rx, y: 50 + Math.sin(ang) * ry };
+}
+
+// Inclinaison de chaque polaroid — toujours non nulle, alternée.
+function rotFor(i: number) {
+  const base = 6 + (i % 3) * 3;
+  return (i % 2 ? 1 : -1) * base;
+}
+
+// Courbe (quadratique) du centre vers un polaroid, avec une flèche latérale.
+function wire(p: { x: number; y: number }, i: number) {
+  const cx = 50, cy = 50;
+  const mx = (cx + p.x) / 2, my = (cy + p.y) / 2;
+  const dx = p.x - cx, dy = p.y - cy;
+  const len = Math.hypot(dx, dy) || 1;
+  const bend = (i % 2 ? 1 : -1) * 10;
+  const ctrlx = mx + (-dy / len) * bend;
+  const ctrly = my + (dx / len) * bend;
+  return `M${cx} ${cy} Q${ctrlx.toFixed(2)} ${ctrly.toFixed(2)} ${p.x.toFixed(2)} ${p.y.toFixed(2)}`;
+}
 
 function Media({ p, className }: { p: Polaroid; className: string }) {
   if (p.video) {
@@ -39,8 +63,8 @@ function Media({ p, className }: { p: Polaroid; className: string }) {
 
 export default function PolaroidGallery({ items }: { items: Polaroid[] }) {
   const [active, setActive] = useState<Polaroid | null>(null);
+  const positions = useMemo(() => items.map((_, i) => positionFor(i, items.length)), [items]);
 
-  // Fermeture au clavier + verrouillage du scroll quand un polaroid est ouvert.
   useEffect(() => {
     if (!active) return;
     const onKey = (e: KeyboardEvent) => e.key === 'Escape' && setActive(null);
@@ -55,22 +79,46 @@ export default function PolaroidGallery({ items }: { items: Polaroid[] }) {
 
   return (
     <>
-      <div className="polar-scatter">
+      <div className="about-web">
+        <svg className="about-web__lines" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true">
+          {positions.map((p, i) => (
+            <path key={`w${i}`} id={`aw-wire-${i}`} className="aw-wire" d={wire(p, i)} vectorEffect="non-scaling-stroke" />
+          ))}
+          {positions.map((p, i) => (
+            <circle key={`d${i}`} className="aw-dot" r={1.1}>
+              <animateMotion dur={`${2.6 + (i % 3) * 0.5}s`} begin={`${i * 0.35}s`} repeatCount="indefinite">
+                <mpath href={`#aw-wire-${i}`} />
+              </animateMotion>
+            </circle>
+          ))}
+        </svg>
+
+        <span className="about-web__core">MOI</span>
+
         {items.map((p, i) => (
           <motion.button
             key={p.id}
             type="button"
             className="polar"
-            style={{ ['--rot' as string]: `${ROT[i % ROT.length]}deg` }}
+            style={
+              {
+                ['--x' as string]: `${positions[i].x}%`,
+                ['--y' as string]: `${positions[i].y}%`,
+                ['--rot' as string]: `${rotFor(i)}deg`,
+              } as React.CSSProperties
+            }
             onClick={() => setActive(p)}
-            initial={{ opacity: 0, y: 40, rotate: 0 }}
-            whileInView={{ opacity: 1, y: 0 }}
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
             viewport={{ once: true, margin: '0px 0px -6% 0px' }}
-            transition={{ duration: 0.7, ease: EASE, delay: (i % 8) * 0.06 }}
+            transition={{ duration: 0.7, ease: EASE, delay: 0.1 + (i % 8) * 0.09 }}
             aria-label={`Agrandir : ${p.caption}`}
           >
             <span className="polar__frame">
-              <Media p={p} className="polar__media" />
+              <span className="polar__pic">
+                <Media p={p} className="polar__media" />
+                <span className="polar__grain" aria-hidden="true" />
+              </span>
               <span className="polar__cap">{p.caption}</span>
             </span>
           </motion.button>
@@ -90,8 +138,8 @@ export default function PolaroidGallery({ items }: { items: Polaroid[] }) {
             <motion.div
               className="polar-modal__card"
               onClick={(e) => e.stopPropagation()}
-              initial={{ opacity: 0, scale: 0.85, y: 24 }}
-              animate={{ opacity: 1, scale: 1, y: 0 }}
+              initial={{ opacity: 0, scale: 0.85, y: 24, rotate: -2 }}
+              animate={{ opacity: 1, scale: 1, y: 0, rotate: -1.5 }}
               exit={{ opacity: 0, scale: 0.9, y: 12 }}
               transition={{ duration: 0.4, ease: EASE }}
             >
@@ -104,7 +152,10 @@ export default function PolaroidGallery({ items }: { items: Polaroid[] }) {
                 ✕
               </button>
               <span className="polar-modal__frame">
-                <Media p={active} className="polar-modal__media" />
+                <span className="polar-modal__pic">
+                  <Media p={active} className="polar-modal__media" />
+                  <span className="polar-modal__grain" aria-hidden="true" />
+                </span>
                 <span className="polar-modal__cap">{active.caption}</span>
               </span>
               <p className="polar-modal__desc">{active.description}</p>
