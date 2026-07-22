@@ -24,15 +24,18 @@ export default function Manifesto({ settings }: { settings: SiteSettings }) {
           </Reveal>
           <Reveal delay={0.05}>
             <h2 className="about__text">
-              {settings.name} ; <span className="hl">développeur</span>,{' '}
-              <span className="hl">créateur de contenu</span>,{' '}
-              <span className="hl">entrepreneur</span> et{' '}
-              <span className="hl">bâtisseur du numérique</span> — je transforme des idées en
-              produits réels, depuis le Cameroun, pour l&apos;Afrique et le monde.
+              Je crois que la technologie n&apos;a de valeur que lorsqu&apos;elle{' '}
+              <span className="hl">résout un vrai problème</span> ou crée une{' '}
+              <span className="hl">vraie opportunité</span>. C&apos;est cette conviction qui guide
+              chacun de mes projets. Développeur dans l&apos;âme, curieux par nature, j&apos;avance
+              avec une seule ligne de conduite : <span className="hl">apprendre, créer, améliorer</span>.
+              Ma vision est simple mais exigeante, bâtir des outils et des expériences qui
+              rapprochent les idées de la réalité, et grandir un projet à la fois, sans jamais
+              cesser de chercher mieux.
             </h2>
           </Reveal>
           <Reveal delay={0.1}>
-            <a href="#parcours" className="about__link">
+            <a href="/a-propos" className="about__link">
               À propos de moi <span aria-hidden="true">→</span>
             </a>
           </Reveal>

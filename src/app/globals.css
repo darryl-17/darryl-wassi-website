@@ -125,7 +125,7 @@ html.lenis,html.lenis body{height:auto}
 /* ---------- about (style référence) ---------- */
 .about{padding:clamp(5rem,12vh,10rem) var(--pad-x);border-top:1px solid var(--line);background:var(--black)}
 .about__inner{max-width:var(--max);margin:0 auto;display:grid;grid-template-columns:1.12fr .88fr;gap:clamp(2rem,5vw,5rem);align-items:center}
-.about__text{font-family:var(--font-display);font-weight:500;text-transform:none;font-size:clamp(1.5rem,3.2vw,2.9rem);line-height:1.14;letter-spacing:-.025em;color:var(--white)}
+.about__text{font-family:var(--font-display);font-weight:500;text-transform:none;font-size:clamp(1.15rem,2vw,1.75rem);line-height:1.42;letter-spacing:-.015em;color:var(--white)}
 .about__text .hl{color:var(--accent-ink)}
 .about__link{display:inline-flex;align-items:center;gap:.6rem;margin-top:2.2rem;color:var(--accent-ink);font-family:var(--font-head);font-weight:700;text-transform:uppercase;letter-spacing:.08em;font-size:.9rem;transition:gap .4s var(--ease)}
 .about__link:hover{gap:1.1rem}
@@ -447,4 +447,31 @@ html.lenis,html.lenis body{height:auto}
   .rryl__backdrop{grid-template-columns:repeat(3,1fr)}
   .showrow{grid-template-columns:1fr;gap:1rem}
   .showrow__art{max-width:220px}
+}
+
+/* ============ Page À propos — galerie polaroid ============ */
+.apropos{min-height:100vh;padding:clamp(4rem,10vh,8rem) var(--pad-x) clamp(3rem,6vw,5rem);background:radial-gradient(70% 60% at 50% 0%,rgba(144,238,144,.08),transparent 60%),var(--black)}
+.apropos__head{max-width:var(--max);margin:0 auto;text-align:center}
+.apropos__title{font-family:var(--font-display);text-transform:uppercase;font-size:clamp(2.6rem,9vw,7rem);line-height:.9;letter-spacing:-.01em;color:var(--white)}
+.apropos__lead{color:var(--grey);font-size:clamp(1rem,1.4vw,1.2rem);max-width:52ch;margin:1.4rem auto 0}
+.polar-scatter{display:flex;flex-wrap:wrap;justify-content:center;align-items:center;gap:.4rem;max-width:1080px;margin:clamp(2.5rem,5vw,4.5rem) auto 0}
+.polar{appearance:none;border:0;background:none;padding:0;margin:clamp(-.9rem,-1.4vw,-.5rem);cursor:pointer;width:clamp(148px,20vw,220px);position:relative;z-index:1;transform:rotate(var(--rot,0deg));transition:transform .45s var(--ease),filter .45s;filter:drop-shadow(0 14px 24px rgba(11,11,12,.28))}
+.polar:hover,.polar:focus-visible{transform:rotate(0deg) translateY(-10px) scale(1.05);z-index:6;outline:none;filter:drop-shadow(0 26px 40px rgba(11,11,12,.4))}
+.polar__frame{display:block;background:#fdfdfb;padding:.55rem .55rem 0;border-radius:3px}
+.polar__media{display:block;width:100%;aspect-ratio:1/1;object-fit:cover;background:#e6e6e2;border-radius:1px}
+.polar__cap{display:block;text-align:center;padding:.55rem .2rem .7rem;font-family:var(--font-display);font-weight:500;font-size:.86rem;letter-spacing:-.01em;color:#26262a}
+/* Modale d'agrandissement */
+.polar-modal{position:fixed;inset:0;z-index:400;display:flex;align-items:center;justify-content:center;padding:clamp(1rem,4vw,3rem);background:rgba(11,11,12,.6);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px)}
+.polar-modal__card{position:relative;background:#fdfdfb;padding:clamp(.9rem,1.6vw,1.3rem) clamp(.9rem,1.6vw,1.3rem) 0;border-radius:4px;box-shadow:0 40px 90px -30px rgba(0,0,0,.7);max-width:min(92vw,520px);width:100%;max-height:92vh;overflow:auto}
+.polar-modal__frame{display:block}
+.polar-modal__media{display:block;width:100%;max-height:58vh;object-fit:cover;background:#e6e6e2;border-radius:2px}
+.polar-modal__cap{display:block;text-align:center;padding:.85rem .2rem .3rem;font-family:var(--font-display);font-weight:500;font-size:clamp(1.15rem,2.4vw,1.55rem);letter-spacing:-.015em;color:#1a1a1c}
+.polar-modal__desc{color:#4c4f55;font-size:clamp(.95rem,1.4vw,1.08rem);line-height:1.6;padding:.5rem .4rem 1.3rem;text-align:center}
+.polar-modal__close{position:absolute;top:.6rem;right:.6rem;width:36px;height:36px;border-radius:50%;border:0;background:rgba(11,11,12,.08);color:#0b0b0c;font-size:.95rem;cursor:pointer;display:grid;place-items:center;transition:background .3s,transform .3s;z-index:2}
+.polar-modal__close:hover{background:var(--accent);transform:rotate(90deg)}
+@media (max-width:560px){
+  .polar{width:clamp(140px,42vw,190px);margin:-.4rem}
+}
+@media (prefers-reduced-motion:reduce){
+  .polar,.polar:hover{transition:none}
 }
