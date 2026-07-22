@@ -5,7 +5,8 @@ import { timelineItem } from './timelineItem';
 import { newsItem } from './newsItem';
 import { show } from './show';
 import { subscriber } from './subscriber';
+import { polaroid } from './polaroid';
 
 export const schema: { types: SchemaTypeDefinition[] } = {
-  types: [siteSettings, venture, timelineItem, newsItem, show, subscriber],
+  types: [siteSettings, venture, timelineItem, newsItem, show, subscriber, polaroid],
 };

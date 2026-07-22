@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import SmoothScroll from '@/components/SmoothScroll';
 import Footer from '@/components/Footer';
 import PolaroidGallery, { type Polaroid } from '@/components/PolaroidGallery';
-import { getSiteContent } from '@/sanity/queries';
+import { getSiteContent, getPolaroids } from '@/sanity/queries';
 
 export const revalidate = 30;
 export const metadata: Metadata = {
@@ -11,11 +11,11 @@ export const metadata: Metadata = {
 };
 
 export default async function AProposPage() {
-  const { settings } = await getSiteContent();
+  const [{ settings }, studioPolaroids] = await Promise.all([getSiteContent(), getPolaroids()]);
 
-  // Contenu de démonstration — à remplacer par les vraies photos / vidéos + descriptions.
+  // Contenu de démonstration — utilisé tant qu'aucun polaroid n'est créé dans le Studio.
   // Chaque polaroid accepte : image (url), video (url .mp4) OU gradient (repli), caption, description.
-  const polaroids: Polaroid[] = [
+  const placeholders: Polaroid[] = [
     {
       id: 'p1',
       caption: 'Moi, aujourd’hui',
@@ -60,6 +60,9 @@ export default async function AProposPage() {
       gradient: 'linear-gradient(135deg,#0e3a1f,#90ee90)',
     },
   ];
+
+  // Priorité au contenu du Studio ; sinon, contenu de démonstration.
+  const polaroids = studioPolaroids.length ? studioPolaroids : placeholders;
 
   return (
     <>

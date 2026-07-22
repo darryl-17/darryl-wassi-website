@@ -1,6 +1,7 @@
 import { groq } from 'next-sanity';
 import { client } from './client';
 import { fallbackContent, type SiteContent, type SiteSettings } from '@/lib/fallback';
+import type { Polaroid } from '@/components/PolaroidGallery';
 
 /** Returns `value` only if it's a non-empty string, else `fallback`. */
 function str(value: unknown, fallback: string): string {
@@ -104,5 +105,38 @@ export async function getSiteContent(): Promise<SiteContent> {
   } catch (err) {
     console.warn('[Sanity] fetch failed, using fallback content:', err);
     return fallbackContent;
+  }
+}
+
+const polaroidQuery = groq`*[_type == "polaroid"] | order(order asc, _createdAt asc){
+  "id": _id,
+  caption,
+  description,
+  "image": image.asset->url,
+  "video": video.asset->url
+}`;
+
+/**
+ * Polaroids de la page « À propos », gérés depuis le Studio.
+ * Renvoie [] si Sanity n'est pas configuré ou si aucun polaroid n'existe
+ * (la page utilise alors son contenu de démonstration).
+ */
+export async function getPolaroids(): Promise<Polaroid[]> {
+  if (!client) return [];
+  try {
+    const data = await client.fetch(polaroidQuery, {}, { next: { revalidate: 30 } });
+    if (!Array.isArray(data)) return [];
+    return data
+      .filter((d) => d && typeof d.caption === 'string')
+      .map((d) => ({
+        id: String(d.id),
+        caption: d.caption,
+        description: typeof d.description === 'string' ? d.description : '',
+        image: typeof d.image === 'string' ? d.image : undefined,
+        video: typeof d.video === 'string' ? d.video : undefined,
+      }));
+  } catch (err) {
+    console.warn('[Sanity] polaroids fetch failed:', err);
+    return [];
   }
 }
