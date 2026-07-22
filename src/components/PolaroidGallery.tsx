@@ -17,8 +17,9 @@ const EASE = [0.16, 1, 0.3, 1] as const;
 // Position (en %) de chaque polaroid, dispersée autour du centre (50,50).
 function positionFor(i: number, n: number) {
   const ang = (-90 + (360 / n) * i) * (Math.PI / 180);
-  const rx = 40 + (i % 2 ? 4 : -4) + (i % 3 === 0 ? -3 : 0);
-  const ry = 36 + (i % 2 ? -3 : 5);
+  // Rayons resserrés pour que les polaroids tiennent sans déborder, même en petit.
+  const rx = 35 + (i % 2 ? 3 : -3) + (i % 3 === 0 ? -2 : 0);
+  const ry = 32 + (i % 2 ? -3 : 4);
   return { x: 50 + Math.cos(ang) * rx, y: 50 + Math.sin(ang) * ry };
 }
 
