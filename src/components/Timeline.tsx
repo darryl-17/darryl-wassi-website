@@ -27,9 +27,11 @@ type Props = {
   showCta?: boolean;
   heading?: ReactNode;
   sections?: SectionsContent;
+  /** Nom affiché dans le noyau d'où partent toutes les liaisons. */
+  name?: string;
 };
 
-export default function Timeline({ items, showCta = false, heading, sections }: Props) {
+export default function Timeline({ items, showCta = false, heading, sections, name }: Props) {
   const trackRef = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({ target: trackRef, offset: ['start 0.6', 'end 0.7'] });
   const scaleY = useSpring(scrollYProgress, { stiffness: 90, damping: 30, mass: 0.4 });
@@ -52,6 +54,8 @@ export default function Timeline({ items, showCta = false, heading, sections }: 
       </div>
 
       <div className="tl2" ref={trackRef}>
+        {/* Noyau d'où part la ligne : toutes les étapes y sont reliées (comme « MOI » sur /a-propos) */}
+        {name && <span className="tl2__core">{name}</span>}
         <div className="tl2__line" />
         <motion.div className="tl2__fill" style={{ scaleY, height: '100%' }} />
 
@@ -106,6 +110,9 @@ export default function Timeline({ items, showCta = false, heading, sections }: 
 
             {/* Année au centre, sur la ligne */}
             <span className="tl2__year">{item.year}</span>
+
+            {/* Liaison animée de l'axe central vers l'étape */}
+            <span className="tl2__wire" aria-hidden="true" />
           </motion.div>
         ))}
       </div>

@@ -24,7 +24,7 @@ export default async function Home() {
         <Hero settings={settings} />
         <Manifesto settings={settings} />
         <Ventures ventures={ventures} sections={settings.sections} />
-        <Timeline items={timeline.slice(0, 4)} showCta sections={settings.sections} />
+        <Timeline items={timeline.slice(0, 4)} showCta sections={settings.sections} name={settings.name} />
         <Spotlight sections={settings.sections} />
         <RrylIntro shows={shows} sections={settings.sections} />
         <News news={news} sections={settings.sections} />

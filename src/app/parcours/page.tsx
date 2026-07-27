@@ -28,6 +28,7 @@ export default async function ParcoursPage() {
       <main>
         <Timeline
           items={timeline}
+          name={settings.name}
           heading={
             <h2 className="section-title section-title--xl">
               LE PARCOURS<br />
