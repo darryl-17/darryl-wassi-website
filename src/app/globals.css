@@ -160,35 +160,6 @@ html.lenis,html.lenis body{height:auto}
 .timeline{padding:clamp(6rem,12vh,11rem) var(--pad-x);border-top:1px solid var(--line);background:linear-gradient(180deg,var(--black),var(--charcoal) 50%,var(--black))}
 .timeline__head{max-width:var(--max);margin:0 auto clamp(3rem,7vw,6rem)}
 .timeline__lead{margin-top:2rem;max-width:46ch;color:var(--grey);font-size:clamp(1rem,1.5vw,1.25rem)}
-.tl2{position:relative;max-width:1100px;margin:0 auto;padding:1rem 0}
-/* Noyau « DARRYL WASSI » : origine de l'axe, toutes les étapes s'y rattachent */
-.tl2__core{position:absolute;left:50%;top:0;transform:translate(-50%,-50%);z-index:5;font-family:var(--font-display);font-weight:600;text-transform:uppercase;font-size:clamp(.8rem,1.5vw,1.1rem);letter-spacing:.02em;white-space:nowrap;color:var(--white);padding:.62rem 1.25rem;border-radius:100px;background:var(--black);border:1px solid rgba(46,143,70,.45)}
-.tl2__core::before{content:"";position:absolute;inset:-5px;border-radius:100px;border:1px solid rgba(46,143,70,.4);animation:corePulse 3s var(--ease) infinite;pointer-events:none}
-/* Liaison animée (tirets qui défilent + point lumineux) de l'axe vers chaque étape */
-.tl2__wire{position:absolute;top:clamp(13px,1.9vw,24px);height:2px;width:calc(22% - clamp(2.6rem,6vw,5.4rem));z-index:0;pointer-events:none;background-image:repeating-linear-gradient(90deg,#2e8f46 0 6px,transparent 6px 14px);background-size:14px 2px;opacity:.55;animation:tlflow 1.2s linear infinite}
-.tl2__item--imgright .tl2__wire{left:calc(50% + clamp(2.6rem,6vw,5.4rem))}
-.tl2__item--imgleft .tl2__wire{right:calc(50% + clamp(2.6rem,6vw,5.4rem))}
-.tl2__wire::after{content:"";position:absolute;top:50%;width:7px;height:7px;border-radius:50%;background:var(--accent);box-shadow:0 0 8px rgba(144,238,144,.95);margin:-3.5px 0 0 -3.5px;animation:tldotR 2.8s linear infinite}
-.tl2__item--imgleft .tl2__wire::after{animation-name:tldotL}
-@keyframes tlflow{to{background-position:14px 0}}
-@keyframes tldotR{0%{left:0;opacity:0}10%{opacity:1}90%{opacity:1}100%{left:100%;opacity:0}}
-@keyframes tldotL{0%{left:100%;opacity:0}10%{opacity:1}90%{opacity:1}100%{left:0;opacity:0}}
-.tl2__line{position:absolute;left:50%;top:0;bottom:0;width:2px;background:var(--line);transform:translateX(-50%)}
-.tl2__fill{position:absolute;left:50%;top:0;width:2px;height:100%;background:linear-gradient(var(--accent),var(--accent-glow));box-shadow:0 0 16px var(--accent-glow);transform:translateX(-50%);transform-origin:top;will-change:transform}
-.tl2__item{position:relative;display:grid;grid-template-columns:1fr 1fr;column-gap:clamp(4.5rem,11vw,10rem);align-items:start;margin-bottom:clamp(3.5rem,8vw,7rem);overflow:hidden}
-.tl2__item:last-child{margin-bottom:0}
-.tl2__media{min-width:0}
-.tl2__photo{width:100%;aspect-ratio:16/10;background:var(--g);background-size:cover;background-position:center;border-radius:6px;border:1px solid var(--line);filter:grayscale(.2) brightness(.95)}
-.tl2__text{position:relative;display:flex;flex-direction:column;justify-content:flex-start;gap:.6rem;padding:0;min-width:0}
-.tl2__item--imgleft .tl2__media{grid-column:1;grid-row:1}
-.tl2__item--imgleft .tl2__text{grid-column:2;grid-row:1}
-.tl2__item--imgright .tl2__media{grid-column:2;grid-row:1}
-.tl2__item--imgright .tl2__text{grid-column:1;grid-row:1}
-.tl2__year{position:absolute;left:50%;top:0;transform:translateX(-50%);z-index:3;font-family:var(--font-display);font-size:clamp(1.6rem,3.2vw,2.8rem);color:var(--accent-ink);line-height:1.02;text-align:center;pointer-events:none;max-width:clamp(4.5rem,11vw,10rem);overflow-wrap:break-word;word-break:break-word}
-.tl2__title{font-family:var(--font-head);font-weight:800;text-transform:uppercase;font-size:clamp(1.1rem,2vw,1.65rem);letter-spacing:-.01em;line-height:1.05}
-.tl2__place{display:inline-flex;align-items:center;gap:.45rem;color:var(--accent-ink);font-size:.72rem;letter-spacing:.18em;text-transform:uppercase;font-weight:600}
-.tl2__desc{color:var(--grey);font-size:clamp(.9rem,1.1vw,1.02rem);max-width:44ch}
-.tl2__node{display:none}
 .tl2__cta{display:flex;justify-content:center;margin-top:clamp(2.5rem,5vw,4rem)}
 .subnav{position:sticky;top:0;z-index:150;display:flex;align-items:center;justify-content:space-between;padding:1.2rem var(--pad-x);background:rgba(244,245,243,.86);-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);border-bottom:1px solid var(--line);transition:background .5s var(--ease),border-color .4s,padding .5s var(--ease),color .4s}
 /* Variante sur page à hero (image/vidéo) : transparente en haut, fond au scroll — comme la nav d'accueil */
@@ -201,14 +172,6 @@ html.lenis,html.lenis body{height:auto}
 .subnav__back:hover{gap:.9rem}
 .subnav__brand{display:flex;align-items:center;gap:.7rem}
 @media (max-width:820px){
-  .tl2__line,.tl2__fill{left:9px}
-  .tl2__item{grid-template-columns:1fr;padding-left:36px;row-gap:1rem;align-items:start}
-  .tl2__item--imgleft .tl2__media,.tl2__item--imgright .tl2__media{grid-column:1;grid-row:auto}
-  .tl2__item--imgleft .tl2__text,.tl2__item--imgright .tl2__text{grid-column:1;grid-row:auto}
-  .tl2__year{position:static;transform:none;background:none;padding:0;order:-1;font-size:clamp(1.8rem,8vw,2.6rem);max-width:none;white-space:normal;word-break:normal;overflow-wrap:normal}
-  /* Axe à gauche : le noyau s'y aligne et les liaisons horizontales n'ont plus lieu d'être */
-  .tl2__core{left:0;transform:translateY(-50%);font-size:clamp(.72rem,3vw,.9rem);padding:.5rem 1rem}
-  .tl2__wire{display:none}
   .subnav__brand .nav__name{display:none}
 }
 
@@ -482,14 +445,12 @@ html.lenis,html.lenis body{height:auto}
 .aw-dot{fill:#90ee90;filter:drop-shadow(0 0 3px rgba(144,238,144,.9))}
 @keyframes awflow{to{stroke-dashoffset:-10}}
 .about-web__core{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);z-index:2;font-family:var(--font-display);font-weight:500;text-transform:uppercase;font-size:clamp(1.9rem,6.5vw,3.6rem);letter-spacing:.02em;color:var(--white);display:grid;place-items:center;width:clamp(86px,15vw,128px);height:clamp(86px,15vw,128px);border-radius:50%;background:radial-gradient(circle,rgba(244,245,243,.92),rgba(244,245,243,0) 72%)}
+/* Noyau à libellé long (ex. « DARRYL WASSI ») : cercle agrandi, texte réduit sur 2 lignes */
+.about-web__core--sm{font-size:clamp(.72rem,1.9vw,1.05rem);line-height:1.15;letter-spacing:.04em;text-align:center;padding:0 .6rem;width:clamp(100px,17vw,152px);height:clamp(100px,17vw,152px)}
 .about-web__core::before{content:"";position:absolute;inset:0;border-radius:50%;border:1px solid rgba(46,143,70,.35);animation:corePulse 3s var(--ease) infinite}
 @keyframes corePulse{0%,100%{transform:scale(1);opacity:.55}50%{transform:scale(1.16);opacity:0}}
 .polar{position:absolute;left:var(--x);top:var(--y);appearance:none;border:0;background:none;padding:0;cursor:pointer;width:clamp(100px,12.5vw,150px);z-index:3;transform:translate(-50%,-50%) rotate(var(--rot,-6deg));transition:transform .45s var(--ease),filter .45s;filter:drop-shadow(0 14px 24px rgba(11,11,12,.3))}
 .polar:hover,.polar:focus-visible{transform:translate(-50%,-50%) rotate(var(--rot,-6deg)) scale(1.09);z-index:8;outline:none;filter:drop-shadow(0 26px 42px rgba(11,11,12,.45))}
-/* Variante « en flux » (parcours) : polaroïd dans le flux normal, pas positionné en absolu */
-.polar--flow{position:relative;left:auto;top:auto;width:100%;max-width:clamp(200px,26vw,360px);margin-inline:auto;z-index:1;transform:rotate(var(--rot,-4deg));filter:drop-shadow(0 12px 24px rgba(11,11,12,.22))}
-.polar--flow:hover,.polar--flow:focus-visible{transform:rotate(var(--rot,-4deg)) scale(1.035);filter:drop-shadow(0 22px 40px rgba(11,11,12,.34))}
-.polar--flow .polar__cap{font-size:clamp(.8rem,1.1vw,.95rem);letter-spacing:.02em}
 .polar__frame{display:block;background:#f6f1e7;padding:.5rem .5rem 0;border-radius:3px}
 .polar__pic{position:relative;display:block;overflow:hidden;border-radius:1px}
 .polar__media{display:block;width:100%;aspect-ratio:1/1;object-fit:cover;background:#e6e6e2;filter:sepia(.34) contrast(1.06) brightness(1.02) saturate(.82)}
@@ -518,17 +479,20 @@ html.lenis,html.lenis body{height:auto}
   .polar__frame{padding:.4rem .4rem 0}
   .polar__cap{font-size:.66rem;padding:.4rem .15rem .5rem}
   .about-web__core{font-size:clamp(1.35rem,8vw,2.1rem);width:clamp(64px,19vw,90px);height:clamp(64px,19vw,90px)}
+  .about-web__core--sm{font-size:clamp(.6rem,2.9vw,.78rem);width:clamp(78px,23vw,110px);height:clamp(78px,23vw,110px);padding:0 .4rem}
 }
 /* Grands écrans / TV — agrandit la constellation pour occuper l'espace */
 @media (min-width:1920px){
   .about-web{max-width:900px}
   .polar{width:170px}
   .about-web__core{width:150px;height:150px}
+  .about-web__core--sm{width:176px;height:176px;font-size:1.2rem}
 }
 @media (min-width:2560px){
   .about-web{max-width:1120px}
   .polar{width:212px}
   .about-web__core{width:190px;height:190px}
+  .about-web__core--sm{width:224px;height:224px;font-size:1.5rem}
 }
 @media (prefers-reduced-motion:reduce){
   .aw-wire,.about-web__core::before{animation:none}

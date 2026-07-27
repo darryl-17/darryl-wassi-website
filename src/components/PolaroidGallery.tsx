@@ -42,7 +42,7 @@ function wire(p: { x: number; y: number }, i: number) {
   return `M${cx} ${cy} Q${ctrlx.toFixed(2)} ${ctrly.toFixed(2)} ${p.x.toFixed(2)} ${p.y.toFixed(2)}`;
 }
 
-export default function PolaroidGallery({ items }: { items: Polaroid[] }) {
+export default function PolaroidGallery({ items, core = 'MOI' }: { items: Polaroid[]; core?: string }) {
   const [active, setActive] = useState<Polaroid | null>(null);
   const positions = useMemo(() => items.map((_, i) => positionFor(i, items.length)), [items]);
 
@@ -62,7 +62,7 @@ export default function PolaroidGallery({ items }: { items: Polaroid[] }) {
           ))}
         </svg>
 
-        <span className="about-web__core">MOI</span>
+        <span className={`about-web__core${core.length > 6 ? ' about-web__core--sm' : ''}`}>{core}</span>
 
         {items.map((p, i) => (
           <motion.button
