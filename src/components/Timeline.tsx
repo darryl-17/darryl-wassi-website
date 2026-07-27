@@ -1,11 +1,18 @@
 'use client';
 
-import { useRef, type ReactNode } from 'react';
+import { useRef, useState, type ReactNode } from 'react';
 import { motion, useScroll, useSpring } from 'framer-motion';
 import Reveal from './Reveal';
+import PolaroidModal, { PolaroidMedia, type PolaroidContent } from './PolaroidModal';
 import type { TimelineEntry, SectionsContent } from '@/lib/fallback';
 
 const EASE = [0.16, 1, 0.3, 1] as const;
+
+/** Inclinaison alternée de chaque polaroïd du parcours. */
+function rotFor(i: number) {
+  const base = 3 + (i % 3) * 1.5;
+  return (i % 2 ? 1 : -1) * base;
+}
 
 function Pin() {
   return (
@@ -26,6 +33,8 @@ export default function Timeline({ items, showCta = false, heading, sections }: 
   const trackRef = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({ target: trackRef, offset: ['start 0.6', 'end 0.7'] });
   const scaleY = useSpring(scrollYProgress, { stiffness: 90, damping: 30, mass: 0.4 });
+  // Polaroïd agrandi en modale (même effet que la page « À propos »).
+  const [active, setActive] = useState<PolaroidContent | null>(null);
 
   return (
     <section className="timeline" id="parcours">
@@ -55,18 +64,33 @@ export default function Timeline({ items, showCta = false, heading, sections }: 
             viewport={{ once: false, margin: '0px 0px -12% 0px' }}
             transition={{ duration: 0.8, ease: EASE }}
           >
-            {/* Côté image (alterné gauche/droite) */}
+            {/* Côté image (alterné gauche/droite) — polaroïd cliquable */}
             <div className="tl2__media">
-              <div
-                className="tl2__photo"
-                style={
-                  {
-                    ['--g' as string]: item.imageUrl
-                      ? `url('${item.imageUrl}')`
-                      : item.accent || 'linear-gradient(135deg,#11203f,#1144ff)',
-                  } as React.CSSProperties
+              <button
+                type="button"
+                className="polar polar--flow"
+                style={{ ['--rot' as string]: `${rotFor(i)}deg` } as React.CSSProperties}
+                onClick={() =>
+                  setActive({
+                    caption: `${item.year} — ${item.title}`,
+                    description: [item.place, item.description].filter(Boolean).join(' · '),
+                    image: item.imageUrl,
+                    gradient: item.accent,
+                  })
                 }
-              />
+                aria-label={`Agrandir : ${item.title}`}
+              >
+                <span className="polar__frame">
+                  <span className="polar__pic">
+                    <PolaroidMedia
+                      p={{ caption: item.title, image: item.imageUrl, gradient: item.accent }}
+                      className="polar__media"
+                    />
+                    <span className="polar__grain" aria-hidden="true" />
+                  </span>
+                  <span className="polar__cap">{item.year}</span>
+                </span>
+              </button>
             </div>
 
             {/* Côté texte (opposé à l'image) */}
@@ -95,6 +119,8 @@ export default function Timeline({ items, showCta = false, heading, sections }: 
           </div>
         </Reveal>
       )}
+
+      <PolaroidModal active={active} onClose={() => setActive(null)} />
     </section>
   );
 }

@@ -471,6 +471,10 @@ html.lenis,html.lenis body{height:auto}
 @keyframes corePulse{0%,100%{transform:scale(1);opacity:.55}50%{transform:scale(1.16);opacity:0}}
 .polar{position:absolute;left:var(--x);top:var(--y);appearance:none;border:0;background:none;padding:0;cursor:pointer;width:clamp(100px,12.5vw,150px);z-index:3;transform:translate(-50%,-50%) rotate(var(--rot,-6deg));transition:transform .45s var(--ease),filter .45s;filter:drop-shadow(0 14px 24px rgba(11,11,12,.3))}
 .polar:hover,.polar:focus-visible{transform:translate(-50%,-50%) rotate(var(--rot,-6deg)) scale(1.09);z-index:8;outline:none;filter:drop-shadow(0 26px 42px rgba(11,11,12,.45))}
+/* Variante « en flux » (parcours) : polaroïd dans le flux normal, pas positionné en absolu */
+.polar--flow{position:relative;left:auto;top:auto;width:100%;max-width:clamp(200px,26vw,360px);margin-inline:auto;z-index:1;transform:rotate(var(--rot,-4deg));filter:drop-shadow(0 12px 24px rgba(11,11,12,.22))}
+.polar--flow:hover,.polar--flow:focus-visible{transform:rotate(var(--rot,-4deg)) scale(1.035);filter:drop-shadow(0 22px 40px rgba(11,11,12,.34))}
+.polar--flow .polar__cap{font-size:clamp(.8rem,1.1vw,.95rem);letter-spacing:.02em}
 .polar__frame{display:block;background:#f6f1e7;padding:.5rem .5rem 0;border-radius:3px}
 .polar__pic{position:relative;display:block;overflow:hidden;border-radius:1px}
 .polar__media{display:block;width:100%;aspect-ratio:1/1;object-fit:cover;background:#e6e6e2;filter:sepia(.34) contrast(1.06) brightness(1.02) saturate(.82)}
