@@ -26,7 +26,7 @@ export default async function ConfidentialitePage() {
 
       <main className="legalpage">
         <div className="legalpage__inner">
-          <h1 className="legalpage__title">Confiden&shy;tialité</h1>
+          <h1 className="legalpage__title legalpage__title--solo">Confidentialité</h1>
           <p className="legalpage__updated">Dernière mise à jour — juin 2026</p>
 
           <p>
